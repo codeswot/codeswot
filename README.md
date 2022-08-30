@@ -13,8 +13,9 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 ### 🧐 More About Me:
 
 - 🔭 &nbsp; I’m currently working on **PalGo**
-- 🤝 &nbsp; I’m looking to collaborate on Bitcoin Projects
+- 🤝 &nbsp; I’m looking to collaborate on opensource Projects
 - 🌱 &nbsp; I’m currently learning Rust;
+- ❤️ &nbsp; I Love Blockchain ⛓;
 - 👨🏻‍💻 &nbsp; Most of my projects are available on [Github](https://github.com/codeswot=repositories)
 - 💬 &nbsp; Ask me about anything tech related, I am happy to help;
 - 🎥 &nbsp; you can watch my videos YouTube 😋 [YouTube](https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g)
