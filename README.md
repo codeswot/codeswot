@@ -18,7 +18,7 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 - 👨🏻‍💻 &nbsp; Most of my projects are available on [Github](https://github.com/codeswot=repositories)
 - 💬 &nbsp; Ask me about anything tech related, I am happy to help;
 - 🎥 &nbsp; you can watch my videos YouTube 😋 [YouTube](https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g)
-- 📫 &nbsp; Feel free to ping me on [LinkedIn, Twitter](https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/ , 'https://twitter.com/codeswot/')
+- 📫 &nbsp; Feel free to ping me on [LinkedIn](https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/) [Twitter]('https://twitter.com/codeswot/')
 - 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post] (Coming Soon !!)
 
 <br>
