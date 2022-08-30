@@ -14,9 +14,10 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 
 - 🔭 &nbsp; I’m currently working on **PalGo**
 - 🤝 &nbsp; I’m looking to collaborate on Bitcoin Projects
-- 🌱 &nbsp; I’m currently learning Rust; 
+- 🌱 &nbsp; I’m currently learning Rust;
 - 👨🏻‍💻 &nbsp; Most of my projects are available on [Github](https://github.com/codeswot=repositories)
 - 💬 &nbsp; Ask me about anything tech related, I am happy to help;
+- 🎥 &nbsp; you can watch my videos YouTube 😋;
 - 📫 &nbsp; Feel free to ping me on [LinkedIn,Twitter](https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/ , 'https://twitter.com/codeswot/')
 - 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post] (Coming Soon !!)
 
