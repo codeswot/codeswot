@@ -40,7 +40,7 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 ### 📊 Github Stats
 <a href='https://github.com/codeswot/github-stats-transparent'>
   
-![Stats Overview](https://github-readme-stats.vercel.app/api?username=codeswot&count_private=true)](https://github.com/anuraghazra/github-readme-stats)
+![Stats Overview](https://github-readme-stats.vercel.app/api?username=codeswot&count_private=true&show_icons=true)]
 ![Most Used Languages](https://raw.githubusercontent.com/codeswot/github-stats-transparent/output/generated/languages.svg)
 
 </a>
