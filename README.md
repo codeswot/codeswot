@@ -20,7 +20,7 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 - 📫 &nbsp; Feel free to ping me on [Twitter](https://twitter.com/codeswot/) and [LinkedIn](https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/)
 - 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post] (Coming Soon !!)
 
-<br/>
+<br>
 ### 🛠 Language and Tools:
 
 <a href="https://developer.android.com" target="_blank"> <img align="left" alt="Android" height ="42px" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/android/android.svg"> </a>
@@ -33,6 +33,7 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 <a href="https://nodejs.org" target="_blank"><img align="left" alt="Node.js" height ="42px" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/node/node.svg"></a>
 <a href="https://git-scm.com/" target="_blank"> <img src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/git-scm/git-scm.svg" align="left" alt="git" height='42px'/> </a>
 <a href="https://www.figma.com/" target="_blank"> <img src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/figma/figma.svg" alt="figma" height='42px'/> </a>
+
 
 <br>
 
