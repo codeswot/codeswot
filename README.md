@@ -20,8 +20,9 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 - 📫 &nbsp; Feel free to ping me on [Twitter](https://twitter.com/codeswot/) and [LinkedIn](https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/)
 - 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post] (Coming Soon !!)
 
-<br>
+<br/>
 ### 🛠 Language and Tools:
+
 <a href="https://developer.android.com" target="_blank"> <img align="left" alt="Android" height ="42px" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/android/android.svg"> </a>
 <a href="https://kotlinlang.org" target="_blank"><img align="left" alt="Kotlin" height ="42px" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/kotlin/kotlin.svg"></a>
 <a href="https://www.java.com" target="_blank"><img align="left" alt="Java" height ="42px" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/java/java.svg"></a>
