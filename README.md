@@ -40,11 +40,10 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 
 <a href="https://git-scm.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/git.svg" align="left" alt="git" height='35px'/> </a>
 
-<a href="https://www.figma.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/figma.svg" alt="Figma" height='35px'/> </a>
+<a href="https://www.figma.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/figma.svg" alt="Figma" height='35px'/> </a><a href="https://www.mongodb.com/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/mongodb.svg" alt="MongoDB" height='35px'/> </a><a href="https://redis.io/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/redis.svg" alt="Redis" height='35px'/> </a>
+<a href="https://www.postgresql.org/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/postgress.svg" alt="Postgres" height='35px'/> </a>
 
-<a href="https://www.mongodb.com/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/mongodb.svg" alt="MongoDB" height='35px'/> </a>
 
-<a href="https://www.postgresql.org/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/postgress.svg" alt="MongoDB" height='35px'/> </a>
 
 <br>
 
@@ -60,8 +59,6 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 <a href='https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g/'><img align='left' alt="youtube" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/youtube.gif" height='55px'/></a>
 
 
-
-<br/>
 <br/>
 
 
