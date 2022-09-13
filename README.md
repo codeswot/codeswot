@@ -1,8 +1,3 @@
-<style>
-.icons{
-margin-right:200px;
-}
-</style>
 # Hey 👋, I am  Mubarak Ibrahim (Codeswot) !
 
 i am an achiever with some industry experience in Software Design who enjoys solving problems and achieving goals i enjoy awesome stuff 
