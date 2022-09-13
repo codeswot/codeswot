@@ -1,6 +1,4 @@
-## Hey 👋, I'm Mubarak Ibrahim (Codeswot)!
-<a href='https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/'><img align='left' alt="linkedin" src="https://raw.githubusercontent.com/rahul-jha98/rahul-jha98/561d474902b59c7429ec22bb73e225696c27b202/assets/linkedin.svg" height='18px'/></a>
-<a href='https://twitter.com/codeswot/'><img align='left' alt="twitter" src="https://raw.githubusercontent.com/rahul-jha98/rahul-jha98/561d474902b59c7429ec22bb73e225696c27b202/assets/twitter.svg" height='18px'/></a>
+## Hey 👋, I am  Mubarak Ibrahim (Codeswot) !
 
 i am an achiever with some industry experience in Software Design who enjoys solving problems and achieving goals i enjoy awesome stuff 
 (I am a Developer who does => Web Development 🌐, App Developement 📱, Backend Engineering 💻)
@@ -22,6 +20,10 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 - 📫 &nbsp; Feel free to ping me on [Twitter](https://twitter.com/codeswot/) and [LinkedIn](https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/)
 - 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post] (Coming Soon !!)
 
+<br>
+### 👨‍👩‍👧 Socials
+<a href='https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/'><img align='left' alt="linkedin" src="https://raw.githubusercontent.com/rahul-jha98/rahul-jha98/561d474902b59c7429ec22bb73e225696c27b202/assets/linkedin.svg" height='18px'/></a>
+<a href='https://twitter.com/codeswot/'><img align='left' alt="twitter" src="https://raw.githubusercontent.com/rahul-jha98/rahul-jha98/561d474902b59c7429ec22bb73e225696c27b202/assets/twitter.svg" height='18px'/></a>
 <br>
 
 ### 🔨 Languages and Tools:
