@@ -10,6 +10,9 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 
 <img align="right" alt="GIF" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/other/techstack.gif" width="360px"/>
 
+<br>
+<br>
+
 ### 🤔 More about Me:
 - 🔭 &nbsp; I’m currently working on **PalGo**
 - 🤝 &nbsp; I’m looking to collaborate on open source Projects
