@@ -50,15 +50,15 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 <br>
 
 ### 👨‍👩‍👧 Social Accounts:
-<a href='mailto:elmubarak333@gmail.com'><img align='left' alt="gmail" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/gmail.svg" height='30px'/></a>
+<a href='mailto:elmubarak333@gmail.com'><img align='left' alt="gmail" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/gmail.svg" height='30px' width='30px'/></a>
 
-<a href='https://wa.me/+2349045476209?text=Hello, Codeswot'><img align='left' alt="whatsapp" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/whatsapp.gif" height='30px'/></a>
+<a href='https://wa.me/+2349045476209?text=Hello, Codeswot'><img align='left' alt="whatsapp" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/whatsapp.gif" height='30px' width='30px'/></a>
 
-<a href='https://twitter.com/codeswot/'><img align='left' alt="twitter" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/twitter.gif" height='30px'/></a>
+<a href='https://twitter.com/codeswot/'><img align='left' alt="twitter" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/twitter.gif" height='30px' width='30px'/></a>
 
-<a href='https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/'><img align='left' alt="linkedin" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/linkedin.gif" height='30px'/></a>
+<a href='https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/'><img align='left' alt="linkedin" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/linkedin.gif" height='30px' width='30px'/></a>
 
-<a href='https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g/'><img align='left' alt="youtube" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/youtube.gif" height='30px'/></a>
+<a href='https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g/'><img align='left' alt="youtube" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/youtube.gif" height='30px' width='30px'/></a>
 
 
 <br/>
