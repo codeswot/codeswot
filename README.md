@@ -11,7 +11,6 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 <img align="right" alt="GIF" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/other/techstack.gif" width="360px"/>
 
 <br>
-<br>
 
 ### 🤔 More about Me:
 - 🔭 &nbsp; I’m currently working on **PalGo**
@@ -55,13 +54,13 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 ### 👨‍👩‍👧 Social Accounts:
 <a href='mailto:elmubarak333@gmail.com'><img align='left' alt="gmail" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/gmail.svg" height='30px' width='30px'/></a>
 
-<a href='https://wa.me/+2349045476209?text=Hello, Codeswot'><img align='left' alt="whatsapp" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/whatsapp.gif" height='40px' width='40px'/></a>
+<a href='https://wa.me/+2349045476209?text=Hello, Codeswot'><img align='left' alt="whatsapp" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/whatsapp.gif" height='35px' width='35px'/></a>
 
-<a href='https://twitter.com/codeswot/'><img align='left' alt="twitter" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/twitter.gif" height='40px' width='40px'/></a>
+<a href='https://twitter.com/codeswot/'><img align='left' alt="twitter" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/twitter.gif" height='35px' width='35px'/></a>
 
-<a href='https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/'><img align='left' alt="linkedin" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/linkedin.gif" height='40px' width='40px'/></a>
+<a href='https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/'><img align='left' alt="linkedin" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/linkedin.gif" height='35px' width='35px'/></a>
 
-<a href='https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g/'><img align='left' alt="youtube" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/youtube.gif" height='40px' width='40px'/></a>
+<a href='https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g/'><img align='left' alt="youtube" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/youtube.gif" height='35px' width='35px'/></a>
 
 
 <br/>
