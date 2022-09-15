@@ -30,7 +30,7 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 ### 🛠 Language and Tools:
 <a href="https://flutter.dev" target="_blank"> <img align="left" alt="Flutter" height ="36px" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/flutter.svg"> </a>
 
-<a href="https://firebase.google.com/" target="_blank"> <img align="left" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/firebase.svg" alt="Firebase" height ="35px"/> </a>
+<a href="https://www.swift.org/documentation/" target="_blank"> <img align="left" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/swift.svg" alt="Swift" height ="35px"/> </a>
 
 <a href="https://kotlinlang.org" target="_blank"><img align="left" alt="Kotlin" height ="35px" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/kotlin.svg"></a>
 
@@ -44,6 +44,7 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 
 <a href="https://git-scm.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/git.svg" align="left" alt="git" height='35px'/> </a>
 
+<a href="https://firebase.google.com/" target="_blank"> <img align="left" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/firebase.svg" alt="Firebase" height ="35px"/> </a>
 <a href="https://www.figma.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/figma.svg" alt="Figma" height='35px'/> </a><a href="https://www.mongodb.com/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/mongodb.svg" alt="MongoDB" height='35px'/> </a><a href="https://redis.io/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/redis.svg" alt="Redis" height='35px'/> </a>
 <a href="https://www.postgresql.org/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/postgress.svg" alt="Postgres" height='35px'/> </a><a href="https://docs.docker.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/docker.svg" alt="Docker" height='35px'/> </a>
 
