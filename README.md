@@ -38,6 +38,8 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 
 <a class="icon" href="https://www.typescriptlang.org/" target="_blank"><img align="left" alt="Typescirpt" height ="35px" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/ts.svg"></a>
 
+<a class="icon" href="https://go.dev/" target="_blank"><img align="left" alt="GoLang" height ="35px" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/go.svg"></a>
+
 <a href="https://reactjs.org/" target="_blank"> <img align="left" alt="React" height ="35px" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/react.svg"></a>
 
 <a href="https://nodejs.org" target="_blank"><img align="left" alt="Node.js" height ="35px" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/node.svg"></a>
