@@ -1,4 +1,5 @@
 
+
 # Hey 👋, I am  Mubarak Ibrahim (Codeswot) !
 
 i am an achiever with some industry experience in Software Design who enjoys solving problems and achieving goals i enjoy awesome stuff 
@@ -8,7 +9,8 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 <br/>
 
 <img align="right" alt="GIF" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/other/techstack.gif" width="360px"/>
-### 🧐 More About Me:
+
+### 🤔 More about Me:
 - 🔭 &nbsp; I’m currently working on **PalGo**
 - 🤝 &nbsp; I’m looking to collaborate on open source Projects
 - 🌱 &nbsp; I’m currently learning Rust;
@@ -38,24 +40,25 @@ i am an achiever with some industry experience in Software Design who enjoys sol
 
 <a href="https://git-scm.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/git.svg" align="left" alt="git" height='35px'/> </a>
 
-<a href="https://www.figma.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/figma.svg" alt="Figma" height='35px'/> </a>
+<a href="https://www.figma.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/figma.svg" alt="Figma" height='35px'/> </a><a href="https://www.mongodb.com/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/mongodb.svg" alt="MongoDB" height='35px'/> </a><a href="https://redis.io/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/redis.svg" alt="Redis" height='35px'/> </a>
+<a href="https://www.postgresql.org/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/postgress.svg" alt="Postgres" height='35px'/> </a>
+
+
 
 <br>
 
 ### 👨‍👩‍👧 Social Accounts:
-<a href='mailto:elmubarak333@gmail.com'><img align='left' alt="gmail" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/gmail.svg" height='43px'/></a>
+<a href='mailto:elmubarak333@gmail.com'><img align='left' alt="gmail" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/gmail.svg" height='55px'/></a>
 
-<a href='https://wa.me/+2349045476209?text=Hello, Codeswot'><img align='left' alt="whatsapp" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/whatsapp.gif" height='45px'/></a>
+<a href='https://wa.me/+2349045476209?text=Hello, Codeswot'><img align='left' alt="whatsapp" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/whatsapp.gif" height='55px'/></a>
 
-<a href='https://twitter.com/codeswot/'><img align='left' alt="twitter" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/twitter.gif" height='45px'/></a>
+<a href='https://twitter.com/codeswot/'><img align='left' alt="twitter" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/twitter.gif" height='55px'/></a>
 
-<a href='https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/'><img align='left' alt="linkedin" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/linkedin.gif" height='45px'/></a>
+<a href='https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/'><img align='left' alt="linkedin" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/linkedin.gif" height='55px'/></a>
 
-<a href='https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g/'><img align='left' alt="youtube" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/youtube.gif" height='45px'/></a>
+<a href='https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g/'><img align='left' alt="youtube" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/youtube.gif" height='55px'/></a>
 
 
-
-<br/>
 <br/>
 
 

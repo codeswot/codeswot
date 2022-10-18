@@ -1,0 +1,70 @@
+.intro-container {
+  position: relative;
+  background-color: #000;
+  border-radius:10px 10px 10px 10px;
+
+  }
+  .control{
+    width: 15px;
+    height: 15px;
+    margin-right: 0.5rem;
+    border-radius: 100%;
+    
+  }
+  .intro-header{
+    display: flex;
+    padding: 0rem 1rem;
+    align-items: center;
+    height: 8%;
+    background-color: #353353;
+    border-radius:10px 10px 0px 0px;
+  }
+  .intro-body {
+    color: #2AFE14;
+  }
+  
+  .btn {
+    border: 1px solid rgba(42, 254, 20, 0.62);
+    padding: 5px 10px 5px 10px;
+    
+  }
+  
+  .imageButton {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+  }
+
+
+
+
+.blogcard {
+    box-shadow: 15px -14px 1px 0px #000;
+    -webkit-box-shadow: 15px -14px 1px 0px #000;
+    -moz-box-shadow: 15px -14px 1px 0px #000;
+
+}
+
+.custom_shadow {
+    box-shadow: 15px -14px 1px 0px #353353;
+    -webkit-box-shadow: 15px -14px 1px 0px #353353;
+    -moz-box-shadow: 15px -14px 1px 0px #353353;
+}
+
+.typing-demo {
+  width: 2ch;
+  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

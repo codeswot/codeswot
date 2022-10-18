@@ -1,0 +1,10 @@
+.hide_md {
+    display: none;
+}
+
+@media screen and (max-width: 550px) {
+    .hide_md {
+      display: block;
+    }
+
+}
