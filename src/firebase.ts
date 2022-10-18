@@ -1,19 +1,17 @@
 import  firebase  from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-
  
-
 const firebaseConfig = {
-    apiKey: "AIzaSyAXGgVHRbIXWwrLuI5_41cSpH67HOgtLwE",
-    authDomain: "codeswot.firebaseapp.com",
-    databaseURL: "https://codeswot-default-rtdb.firebaseio.com",
-    projectId: "codeswot",
-    storageBucket: "codeswot.appspot.com",
-    messagingSenderId: "886657193194",
-    appId: "1:886657193194:web:c5753e0ee5264db0d33393"
+    apiKey: import.meta.env.VITE_API_KEY,
+    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+    databaseURL: import.meta.env.VITE_DB,
+    projectId: import.meta.env.VITE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+    messagingSenderId:import.meta.env.VITE_MESSAGE_ID,
+    appId: import.meta.env.VITE_APP_ID,
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 
