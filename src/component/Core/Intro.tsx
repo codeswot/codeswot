@@ -21,16 +21,18 @@ export const IntroWindow = ({ about, intro, qoute }: IntroProp) => {
           <div>
             <h1 className="text-2xl font-bold">$: Hi 👋, I am Codeswot </h1>
             <h1 className="text-2xl font-bold">I Turn Coffee into Code</h1>
-            <h2 className="mt-10 md:text-sm font-semibold ">{intro}</h2>
+            <h2 className="mt-10 md:text-sm font-semibold  ">{intro}</h2>
 
             <div className="absolute w-full bottom-10">
               <h4 className="text-sm pr-8">$: {qoute} </h4>
               <div className="flex justify-end px-14 items-center mt-4">
                 <h6 className="mr-10 text-xs  sm:text[8px]">__ Mubarak I.</h6>
-
+                <a href="#about">
                 <div className="btn cursor-pointer md:font-bold text-sm sm:text-base ">
                   {">"} <span className=""> Know me_</span>
                 </div>
+                </a>
+              
               </div>
             </div>
           </div>

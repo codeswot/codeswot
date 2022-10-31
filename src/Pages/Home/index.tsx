@@ -47,7 +47,7 @@ export const Home = ({email, about, intro, qoute, twitter, github, linkdin}:Home
       <div className="hidden md:block fixed top-24 right-8">
         <a
           href="mailto:mubarak@codeswot.io"
-          className="rotate-180 font-bold"
+          className="rotate-180 font-bold "
           style={{ writingMode: "vertical-lr" }}
         >
           {email}
@@ -59,10 +59,10 @@ export const Home = ({email, about, intro, qoute, twitter, github, linkdin}:Home
       <div className="fixed w-full bottom-1 left-10 hidden md:block">
         {icons.map((item, idx) => (
           <a href={item.to} target="_blank" key={idx}>
-            <div className="rounded-3xl bg-gray w-6 my-5">
+            <div className="rounded-3xl bg-[#64FFDA] w-6 my-5">
               <img
                 src={item.img}
-                className="inline-block h-5 w-5 rounded-full ring-8 ring-gray"
+                className="inline-block h-5 w-5 rounded-full ring-8 ring-[#64FFDA]"
               />
             </div>
           </a>

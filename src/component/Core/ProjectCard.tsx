@@ -1,6 +1,6 @@
-import v1 from "../../assets/v1.svg";
-import v2 from "../../assets/v2.svg";
-import v3 from "../../assets/v3.svg";
+import v1 from "../../assets/playstore.svg";
+import v2 from "../../assets/appstore.svg";
+import v3 from "../../assets/share.svg";
 import flutter from "../../assets/flutter.svg";
 import jangu from "../../assets/jangu.svg";
 import "./style.css";
@@ -69,11 +69,11 @@ export const ProjectCard = ({
 
   return (
     <div className="relative">
-      <div className="bg-silver rounded-xl px-2 py-2 custom_shadow ">
-        <div className="mb-5 text-black flex items-center justify-between">
+      <div className="bg-[#0F2538] text-white rounded-xl px-2 py-2 custom_shadow ">
+        <div className="mb-5 flex items-center justify-between">
           <div>{name}</div>
           <div
-            className="rounded-full bg-white p-2 absolute top-[-45px] right-[-25px] border-8 border-[#353353]
+            className="rounded-full bg-[#0F2538] p-2 absolute top-[-45px] right-[-25px] border-8 border-[#353353]
                         "
           >
             <img src={logo} width="30px" />
@@ -85,21 +85,21 @@ export const ProjectCard = ({
           element="small"
           truncateText="…"
           text={about}
-          textTruncateChild={
-            <div className="">
-              <div
-                onClick={() => setShowAllText(true)}
-                style={{
-                  textTransform: "capitalize",
-                  color: "green",
-                  fontSize: "12px",
-                  cursor: "pointer",
-                }}
-              >
-                more
-              </div>
-            </div>
-          }
+          // textTruncateChild={
+          //   <div className="">
+          //     <div
+          //       onClick={() => setShowAllText(true)}
+          //       style={{
+          //         textTransform: "capitalize",
+          //         color: "green",
+          //         fontSize: "12px",
+          //         cursor: "pointer",
+          //       }}
+          //     >
+          //       more
+          //     </div>
+          //   </div>
+          // }
         />
 
         
@@ -107,7 +107,7 @@ export const ProjectCard = ({
         <div className="grid grid-cols-2 mt-3">
           <div className="flex flex-wrap">
             {techs.map((tech, idx) => (
-              <div className="bg-[#C4C4C4] rounded-full w-24  flex items-center space-x-1 justify-between   mb-1 h-8 p-2" key={tech.id}>
+              <div className=" chip-bg rounded-full w-24  flex items-center space-x-1 mb-1 h-8 p-2" key={tech.id}>
                 <img src={tech.icon} width="20px"  />
                 <div className="text-xs">{tech.name}</div>
               </div>

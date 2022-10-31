@@ -2,6 +2,11 @@
     display: none;
 }
 
+.bg {
+  background: url("../../assets/probg.svg");
+  
+}
+
 @media screen and (max-width: 550px) {
     .hide_md {
       display: block;

@@ -48,10 +48,10 @@ export const Contact = ({ footag, twitter, github, linkedIn }: ContactProp) => {
       <div className=" md:hidden flex space-x-6">
         {icons.map((item, idx) => (
           <a href={item.to} target="_blank" key={idx}>
-            <div className="rounded-3xl bg-gray w-6 my-5">
+            <div className="rounded-3xl bg-[#64FFDA] w-6 my-5">
               <img
                 src={item.img}
-                className="inline-block h-5 w-5 rounded-full ring-8 ring-gray"
+                className="inline-block h-5 w-5 rounded-full ring-8 ring-[#64FFDA]"
               />
             </div>
           </a>

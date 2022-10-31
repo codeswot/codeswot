@@ -50,8 +50,10 @@ export const AboutScreen = ({ image, favoriteTools, about }: AboutProp) => {
 
   return (
     <div className="grid grid-cols-1 place-items-center">
-      <div className=" sm:block md:hidden ">
-        <img src={image} className="hidden sm:block" />
+      <div className="">
+        <div className="bg sm:block md:hidden  ">
+          <img src={image} className="hidden sm:block" />
+        </div>
       </div>
       <div
         className="
@@ -66,7 +68,9 @@ export const AboutScreen = ({ image, favoriteTools, about }: AboutProp) => {
               <span className="text-primary mr-2">{">"} 01.</span>
               About
             </div>
-            <div className=" text-lg font-medium text-white  ">{about}</div>
+            <div className=" text-lg font-medium text-white text-justify  ">
+              {about}
+            </div>
 
             <div className="mt-8 text-white">
               <div className="text-lg font-bold mb-2">
@@ -80,7 +84,6 @@ export const AboutScreen = ({ image, favoriteTools, about }: AboutProp) => {
                       <span className="text-primary">.</span>
                       {item}
                     </div>
-                    
                   </div>
                 ))}
 
@@ -103,7 +106,9 @@ export const AboutScreen = ({ image, favoriteTools, about }: AboutProp) => {
         </div>
 
         <div className="hidden md:block">
-          <img src={image} width="300px" />
+          
+            <img src={image} width="300px" />
+        
         </div>
       </div>
 

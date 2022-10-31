@@ -35,7 +35,7 @@ export const ExperienceScreen = () => {
         <MobileExperienceScreen exp={experience} />
       </div>
 
-      <div className="grid grid-cols-2 gap-4text-white place-items-center items-start mt-3    ">
+      <div className="grid grid-cols-2 gap-4text-white place-items-center items-start mt-3  md:space-x-[-220px]   ">
         <div className="hidden md:block  ">
           <div className="bg-white w-[1px] h-96 relative">
             <div className="flex items-center absolute top-[2rem]">
@@ -233,7 +233,7 @@ function Jangu({ title, startDate, tasks, endDate }: ChildProp) {
       </h6>
 
       {tasks.map((item) => (
-        <div className="my-6 text-base md:w-57">
+        <div className="my-6 text-sm md:w-[25rem] text-justify">
           <span className="text-primary ">. </span> {item}
         </div>
       ))}
@@ -251,7 +251,7 @@ function Geeks({ title, startDate, tasks, endDate }: ChildProp) {
       </h6>
 
       {tasks.map((item) => (
-        <div className="my-6 text-base md:w-57">
+        <div className="my-6 text-sm md:w-[25rem] text-justify">
           <span className="text-primary ">. </span> {item}
         </div>
       ))}
@@ -269,7 +269,7 @@ function Palgo({ title, startDate, tasks, endDate }: ChildProp) {
       </h6>
 
       {tasks.map((item) => (
-        <div className="my-6 text-base md:w-57">
+        <div className="my-6 text-sm md:w-[25rem] text-justify">
           <span className="text-primary ">. </span> {item}
         </div>
       ))}
@@ -287,7 +287,7 @@ function Lex({ title, startDate, tasks, endDate }: ChildProp) {
       </h6>
 
       {tasks.map((item) => (
-        <div className="my-6 text-base md:w-57">
+        <div className="my-6 text-sm md:w-[25rem] text-justify">
           <span className="text-primary ">. </span> {item}
         </div>
       ))}
