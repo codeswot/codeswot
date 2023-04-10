@@ -1,7 +1,8 @@
 
 
 # Hey 👋, I am  Mubarak Ibrahim (Codeswot) !
-I am a developer from Nigeria 🇳🇬, and I have been developing with Flutter since 2018. My passion for programming started when I first got my hands on an Android phone at the age of 17. I went on to learn how to program in Java, build and load a custom Android OS, then went on to learn JavaScript for the web and back-end, I eventually ended up learning how to code in Flutter ❤️. Skilled with an in-depth understanding of Programming, markup, and scripting languages.
+I am a developer from Nigeria 🇳🇬, I have been developing with Flutter since 2018. My passion for programming started when I first got my hands on an Android phone at the age of 17. I went on to learn how to program in Java, build and load custom Android OS from AOSP, I eventually ended up learning how to code in Flutter ❤️ because i have excitement for making attractive and user-friendly software and flutter is just the tool for that. I have expertise in both front-end and back-end development and am constantly searching for new challenges. I also strongly believe in open source software and am always eager to contribute to projects that I believe in. . 
+Skilled with an in-depth understanding of Programming, markup, and scripting languages.
 
  I enjoy problem-solving and have designed software systems ranging from large software suites to Mobile-based applications and Web-based applications.
 
