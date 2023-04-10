@@ -24,7 +24,7 @@ Specialties: User Interface | Problem Solving | User Experience | Testing | Desi
 - 💬 &nbsp; Ask me anything tech related, I am happy to help;
 - 📫 &nbsp; Feel free to ping me on [Twitter](https://twitter.com/codeswot/) and [LinkedIn](https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/)
 - 🎥 &nbsp; you can watch my videos YouTube 😋 [YouTube](https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g) (Coming Soon !!)
-- 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post] (Coming Soon !!)
+- 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post](https://codeswot.medium.com/)
 - 🕸 &nbsp; Check out my Portofolio [Codeswot](https://codeswot.dev)
 
 
