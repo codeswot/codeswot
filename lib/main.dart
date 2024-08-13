@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
+
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -66,6 +72,13 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 5), () {
+      FlutterNativeSplash.remove();
+    });
+    super.initState();
   }
 
   @override

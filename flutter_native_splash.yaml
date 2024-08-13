@@ -1,0 +1,13 @@
+# flutter_native_splash-development.yaml
+flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/other/codeswot.png"
+
+
+  android_12:
+    image: "assets/other/codeswot.png"
+    icon_background_color: "#ffffff"
+    image_dark: "assets/other/codeswot.png"
+    icon_background_color_dark: "#121212"
+
+  web: true
