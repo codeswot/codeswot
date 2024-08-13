@@ -24,7 +24,7 @@ class Codeswot extends StatelessWidget {
           home: child,
         );
       },
-      child: const HomePage(),
+      child: const HomeMain(),
     );
   }
 }
