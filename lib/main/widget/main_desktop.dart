@@ -26,6 +26,7 @@ class _MainPageLgMdState extends State<MainPageLgMd> {
           scrollDirection: Axis.vertical,
           controller: _pageController,
           children: [
+            // build page items ()
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
