@@ -1,3 +1,4 @@
+import 'package:codeswot/config/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,7 +15,7 @@ class CodeSwotLogo extends StatelessWidget {
       text: TextSpan(
         text: '{C}',
         style: GoogleFonts.sourceCodePro(
-          color: const Color(0xff64FFDA),
+          color: AppColors.primaryColor,
           fontSize: fontSize.sp + 2,
           fontWeight: FontWeight.bold,
         ),
@@ -22,7 +23,7 @@ class CodeSwotLogo extends StatelessWidget {
           TextSpan(
             text: 'odeswot',
             style: GoogleFonts.nunito(
-              color: const Color(0xffE6F1FF),
+              color: AppColors.textColor,
               fontSize: fontSize.sp,
               fontWeight: FontWeight.bold,
             ),

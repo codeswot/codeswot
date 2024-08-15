@@ -1,8 +1,8 @@
+import 'package:codeswot/main/widget/local_image.dart';
 import 'package:codeswot/main/widget/main_desktop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EmailLgMd extends StatelessWidget {
@@ -20,10 +20,9 @@ class EmailLgMd extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.topRight,
-              child: SvgPicture.asset(
+              child: LocalImage(
                 width: 120.w,
-                'icons/svg/plane.svg',
-                semanticsLabel: 'Paper plane icon',
+                imgPath: 'icons/png/plane.png',                
               ),
             ),
             Positioned(

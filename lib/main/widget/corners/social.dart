@@ -1,7 +1,8 @@
+import 'package:codeswot/config/theme/colors.dart';
+import 'package:codeswot/main/widget/local_image.dart';
 import 'package:codeswot/main/widget/main_desktop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class BottomSocialLgMd extends StatelessWidget {
   const BottomSocialLgMd({
@@ -17,8 +18,8 @@ class BottomSocialLgMd extends StatelessWidget {
         children: [
           Positioned(
             bottom: -5.w,
-            child: SvgPicture.asset(
-              'icons/svg/hash_tag.svg',
+            child: LocalImage(
+              imgPath: 'icons/png/hash.png',
               width: 120.w,
             ),
           ),
@@ -46,7 +47,7 @@ class LinkedCirclesColumn extends StatelessWidget {
                 height: 50.w,
                 child: VerticalDivider(
                   thickness: 0.5.w,
-                  color: const Color(0xff64FFDA),
+                  color: AppColors.primaryColor,
                 ),
               ),
             ),
@@ -60,9 +61,9 @@ class LinkedCirclesColumn extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 15.w,
                       backgroundColor: const Color(0xff64FFDA),
-                      child: SvgPicture.asset(
-                        'icons/svg/github.svg',
-                        width: 18.w,
+                      child: LocalImage(
+                        imgPath: 'icons/png/git.png',
+                        width: 18.w, 
                       ),
                     ),
                   ),
@@ -71,9 +72,9 @@ class LinkedCirclesColumn extends StatelessWidget {
                     onTap: () => startLaunchUrl('https://x.com/codeswot/'),
                     child: CircleAvatar(
                       radius: 15.w,
-                      backgroundColor: const Color(0xff64FFDA),
-                      child: SvgPicture.asset(
-                        'icons/svg/tweet.svg',
+                      backgroundColor: AppColors.primaryColor,
+                      child: LocalImage(
+                        imgPath: 'icons/png/tweet.png',
                         width: 18.w,
                       ),
                     ),
@@ -83,9 +84,9 @@ class LinkedCirclesColumn extends StatelessWidget {
                     onTap: () => startLaunchUrl('https://www.linkedin.com/in/codeswot/'),
                     child: CircleAvatar(
                       radius: 15.w,
-                      backgroundColor: const Color(0xff64FFDA),
-                      child: SvgPicture.asset(
-                        'icons/svg/link.svg',
+backgroundColor: AppColors.primaryColor,
+                      child: LocalImage(
+                        imgPath: 'icons/png/linked.png',
                         width: 18.w,
                       ),
                     ),
@@ -93,6 +94,7 @@ class LinkedCirclesColumn extends StatelessWidget {
                 ],
               ),
             ),
+         
           ],
         ),
       ),

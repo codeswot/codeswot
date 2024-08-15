@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:codeswot/config/theme/colors.dart';
 import 'package:codeswot/main/widget/awesome_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +17,7 @@ class CodeswotAppBar extends StatelessWidget implements PreferredSizeWidget {
           height: preferredSize.height,
           width: preferredSize.width,
           decoration: BoxDecoration(
-            color: const Color(0xff353353).withOpacity(0.3),
+            color: AppColors.accent.withOpacity(0.3),
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),

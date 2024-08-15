@@ -1,3 +1,4 @@
+import 'package:codeswot/config/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +35,7 @@ class _MainPageLgMdState extends State<MainPageLgMd> {
                     'HE:LLO World! 👋🏾',
                     style: GoogleFonts.nunito(
                       fontSize: 80.sp,
-                      color: Colors.white,
+                      color: AppColors.textColor,
                     ),
                   ),
                   SizedBox(height: 50.w),
@@ -57,14 +58,14 @@ class _MainPageLgMdState extends State<MainPageLgMd> {
                   text: 'I, am ',
                   style: GoogleFonts.nunito(
                     fontSize: 80.sp,
-                    color: Colors.white,
+                    color: AppColors.textColor,
                   ),
                   children: [
                     TextSpan(
                       text: 'Codeswot',
                       style: GoogleFonts.nunito(
                         fontSize: 90.sp,
-                        color: const Color(0xff64FFDA),
+                        color: AppColors.primaryColor,
                       ),
                     ),
                   ],

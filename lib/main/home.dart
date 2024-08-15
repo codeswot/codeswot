@@ -1,15 +1,14 @@
+import 'package:codeswot/config/theme/colors.dart';
 import 'package:codeswot/main/widget/app_bar.dart';
-import 'package:codeswot/main/widget/awesome_logo.dart';
 import 'package:codeswot/main/widget/corners/email.dart';
 import 'package:codeswot/main/widget/corners/live_chat.dart';
 import 'package:codeswot/main/widget/corners/social.dart';
+import 'package:codeswot/main/widget/local_image.dart';
 import 'package:codeswot/main/widget/main_desktop.dart';
 import 'package:codeswot/main/widget/under_construction.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class HomeMain extends ConsumerStatefulWidget {
@@ -29,7 +28,7 @@ class _HomeMainState extends ConsumerState<HomeMain> {
   Widget build(BuildContext context) {
     final isDesktopAbove = ResponsiveBreakpoints.of(context).largerThan(TABLET);
     return Scaffold(
-        backgroundColor: const Color(0xff0A192F),
+        backgroundColor: AppColors.backgroundColor,
         appBar: isDesktopAbove ? const CodeswotAppBar() : null,
         body: isDesktopAbove
             ? const Stack(
@@ -42,10 +41,13 @@ class _HomeMainState extends ConsumerState<HomeMain> {
               )
             : const Undercontruction(),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color(0xff353353),
-          foregroundColor: Colors.white,
+          backgroundColor: AppColors.accent,
+          foregroundColor: AppColors.textColor,
           onPressed: () {},
-          child: const Icon(Icons.chat_bubble_outline),
+          child: LocalImage(
+            imgPath: 'icons/png/chat.png',
+            width: 20.w,
+          ),
         ));
   }
 }
