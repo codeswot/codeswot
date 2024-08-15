@@ -16,7 +16,7 @@ class BottomAnchorStyleLgMd extends StatelessWidget {
       child: LocalImage(
         imgPath: 'icons/png/crox.png',
         width: 120.w,
-        color: AppColors.primaryColor.withOpacity(0.4),
+        color: AppColors.primaryColor.withOpacity(0.1),
       ),
     );
   }

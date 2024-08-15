@@ -40,14 +40,16 @@ class _HomeMainState extends ConsumerState<HomeMain> {
                 ],
               )
             : const Undercontruction(),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: AppColors.accent,
-          foregroundColor: AppColors.textColor,
+      floatingActionButton: isDesktopAbove
+          ? FloatingActionButton(
+              backgroundColor: AppColors.textColor.withOpacity(0.10),
           onPressed: () {},
           child: LocalImage(
-            imgPath: 'icons/png/chat.png',
-            width: 20.w,
+                imgPath: 'icons/png/chat_bg.png',
+                width: 30.w,
           ),
-        ));
+            )
+          : null,
+    );
   }
 }

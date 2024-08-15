@@ -14,7 +14,7 @@ class Undercontruction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(100.w),
+      padding: EdgeInsets.only(left: 100.w, right: 100.w, top: 1.sh / 3),
       width: 1.sw,
       child: SingleChildScrollView(
         child: Column(
