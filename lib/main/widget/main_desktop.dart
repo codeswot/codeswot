@@ -1,5 +1,6 @@
 import 'package:codeswot/config/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,63 +19,150 @@ class _MainPageLgMdState extends State<MainPageLgMd> {
     initialPage: 0,
     viewportFraction: 1,
   );
+  final List pageImtems = const [
+    Hero(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      child: Center(
-        child: PageView(
+    return Flexible(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.w),
+        child: PageView.builder(
           scrollDirection: Axis.vertical,
           controller: _pageController,
-          children: [
-            // build page items ()
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'HE:LLO World! 👋🏾',
-                    style: GoogleFonts.nunito(
-                      fontSize: 80.sp,
-                      color: AppColors.textColor,
-                    ),
-                  ),
-                  SizedBox(height: 50.w),
-                  IconButton.filledTonal(
-                    iconSize: 70.w,
-                    onPressed: () {
-                      _pageController.nextPage(
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.easeIn,
-                      );
-                    },
-                    icon: const Icon(Icons.arrow_downward_rounded),
-                  ),
-                ],
+          itemCount: pageImtems.length,
+          itemBuilder: (context, index) => pageImtems[index],
+        ),
+      ),
+    );
+  }
+}
+
+class Hero extends ConsumerWidget {
+  const Hero({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Container(
+      margin: EdgeInsets.only(top: 70.w, bottom: 80.w, right: 250.w),
+      decoration: BoxDecoration(
+        color: AppColors.black,
+        borderRadius: BorderRadius.circular(12.w),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: EdgeInsets.only(left: 20.w),
+            width: double.infinity,
+            // height: 40.w,
+            decoration: BoxDecoration(
+              color: AppColors.accent.withOpacity(0.5),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12.w),
+                topRight: Radius.circular(12.w),
               ),
             ),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  text: 'I, am ',
-                  style: GoogleFonts.nunito(
-                    fontSize: 80.sp,
-                    color: AppColors.textColor,
+            child: Row(
+              children: List.generate(
+                3,
+                (index) => Padding(
+                  padding: EdgeInsets.only(
+                    right: 8.w,
+                    top: 16.w,
+                    bottom: 16.w,
                   ),
+                  child: TerminalAction(color: _getColorsByIndex(index)),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 30.w),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextSpan(
-                      text: 'Codeswot',
+                    SelectableText(
+                      '\$: Hi 👋, I am Codeswot\nI Turn code into Stuff,',
+                      style: GoogleFonts.sourceCodePro(
+                        fontSize: 20.sp,
+                        color: Colors.green,
+                      ),
+                    ),
+                    SizedBox(height: 30.w),
+                    SelectableText(
+                      '| Your Friendly neighbourhood developer! With great power comes great responsibilities. Hard work, studies and constant coding Ihave acquired the awesome power of developing',
                       style: GoogleFonts.nunito(
-                        fontSize: 90.sp,
-                        color: AppColors.primaryColor,
+                        fontSize: 20.sp,
+                        color: Colors.green,
                       ),
                     ),
                   ],
                 ),
-              ),
+                SizedBox(height: 150.w),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SelectableText(
+                          '\$: “Always believe in you ability to achieve greatness”',
+                          style: GoogleFonts.sourceCodePro(
+                            fontSize: 18.sp,
+                            color: Colors.green,
+                          ),
+                        ),
+                        Text(
+                          '__ Mubarak I.',
+                          style: GoogleFonts.nunito(
+                            fontSize: 15.sp,
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
+                    ), 
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Color _getColorsByIndex(int index) {
+    switch (index) {
+      case 0:
+        return Colors.red;
+      case 1:
+        return AppColors.accent;
+      case 2:
+        return AppColors.primaryColor;
+
+      default:
+        return AppColors.accent;
+    }
+  }
+}
+
+class TerminalAction extends StatelessWidget {
+  const TerminalAction({this.color, super.key});
+  final Color? color;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 15.w,
+      height: 15.w,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: color ?? Colors.red,
       ),
     );
   }

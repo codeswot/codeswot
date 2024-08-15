@@ -31,12 +31,18 @@ class _HomeMainState extends ConsumerState<HomeMain> {
         backgroundColor: AppColors.backgroundColor,
         appBar: isDesktopAbove ? const CodeswotAppBar() : null,
         body: isDesktopAbove
-            ? const Stack(
+          ? const Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
+                BottomSocialLgMd(),
                   MainPageLgMd(),
-                  EmailLgMd(),
-                  BottomAnchorStyleLgMd(),
-                  BottomSocialLgMd(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    EmailLgMd(),
+                    BottomAnchorStyleLgMd(),
+                  ],
+                ),
                 ],
               )
             : const Undercontruction(),

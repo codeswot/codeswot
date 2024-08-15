@@ -12,56 +12,50 @@ class EmailLgMd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: Padding(
-        padding: EdgeInsets.only(top: 20.w, right: 10.w),
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: LocalImage(
-                width: 120.w,
-                imgPath: 'icons/png/plane.png',                
-              ),
-            ),
-            Positioned(
-              right: 20.w,
-              child: RotatedBox(
-                quarterTurns: 1,
-                child: InkWell(
-                  onTap: () => startLaunchUrl('mailto:mubarak@codeswot.dev'),
-                  onLongPress: () {
-                    Clipboard.setData(const ClipboardData(text: 'mubarak@codeswot.dev')).then((_) {
-                      // Optional: Show a confirmation message
-                      // ignore: use_build_context_synchronously
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content: Text(
-                          'Copied to clipboard',
-                          style: GoogleFonts.nunito(
-                            fontSize: 20.sp,
-                          ),
-                        )),
-                      );
-                    });
-                  },
-                  borderRadius: BorderRadius.circular(8.w),
-                  child: Padding(
-                    padding: EdgeInsets.all(2.sp),
-                    child: Text(
-                      'mubarak@codeswot.dev',
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                        color: const Color(0xffE6F1FF).withOpacity(0.5),
-                      ),
+    return Padding(
+      padding: EdgeInsets.only(top: 20.w, right: 10.w),
+      child: Stack(
+        children: [
+          LocalImage(
+            width: 120.w,
+            imgPath: 'icons/png/plane.png',
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 70.w),
+            child: RotatedBox(
+              quarterTurns: 1,
+              child: InkWell(
+                onTap: () => startLaunchUrl('mailto:mubarak@codeswot.dev'),
+                onLongPress: () {
+                  Clipboard.setData(const ClipboardData(text: 'mubarak@codeswot.dev')).then((_) {
+                    // Optional: Show a confirmation message
+                    // ignore: use_build_context_synchronously
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text(
+                        'Copied to clipboard',
+                        style: GoogleFonts.nunito(
+                          fontSize: 20.sp,
+                        ),
+                      )),
+                    );
+                  });
+                },
+                borderRadius: BorderRadius.circular(8.w),
+                child: Padding(
+                  padding: EdgeInsets.all(2.sp),
+                  child: Text(
+                    'mubarak@codeswot.dev',
+                    style: TextStyle(
+                      fontSize: 15.sp,
+                      color: const Color(0xffE6F1FF).withOpacity(0.5),
                     ),
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
