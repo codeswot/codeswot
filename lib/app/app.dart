@@ -1,4 +1,4 @@
-import 'package:codeswot/features/main/home.dart';
+import 'package:codeswot/main/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +10,7 @@ class Codeswot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(1920, 1080),
+      designSize: const Size.fromWidth(1280),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
@@ -24,11 +24,11 @@ class Codeswot extends StatelessWidget {
           ),
           builder: (context, child) => ResponsiveBreakpoints.builder(
             child: child!,
-            breakpoints: [
-              const Breakpoint(start: 0, end: 450, name: MOBILE),
-              const Breakpoint(start: 451, end: 800, name: TABLET),
-              const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-              const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+            breakpoints: const [
+              Breakpoint(start: 0, end: 599, name: MOBILE),
+              Breakpoint(start: 600, end: 1050, name: TABLET),
+              Breakpoint(start: 1051, end: 1440, name: DESKTOP),
+              Breakpoint(start: 1441, end: double.infinity, name: '4K'),
             ],
           ),
           home: child,
