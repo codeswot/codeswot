@@ -18,7 +18,7 @@ class EmailLgMd extends StatelessWidget {
         children: [
           LocalImage(
             width: 120.w,
-            imgPath: 'icons/png/plane.png',
+            imgPath: 'public/png/plane.png',
           ),
           Padding(
             padding: EdgeInsets.only(left: 70.w),

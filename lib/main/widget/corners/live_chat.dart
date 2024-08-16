@@ -11,7 +11,7 @@ class BottomAnchorStyleLgMd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LocalImage(
-      imgPath: 'icons/png/crox.png',
+      imgPath: 'public/png/crox.png',
       width: 120.w,
       color: AppColors.primaryColor.withOpacity(0.1),
     );

@@ -16,7 +16,7 @@ class BottomSocialLgMd extends StatelessWidget {
         Positioned(
           bottom: -5.w,
           child: LocalImage(
-            imgPath: 'icons/png/hash.png',
+            imgPath: 'public/png/hash.png',
             width: 120.w,
           ),
         ),
@@ -58,7 +58,7 @@ class LinkedCirclesColumn extends StatelessWidget {
                       radius: 15.w,
                       backgroundColor: const Color(0xff64FFDA),
                       child: LocalImage(
-                        imgPath: 'icons/png/git.png',
+                        imgPath: 'public/png/git.png',
                         width: 18.w, 
                       ),
                     ),
@@ -70,7 +70,7 @@ class LinkedCirclesColumn extends StatelessWidget {
                       radius: 15.w,
                       backgroundColor: AppColors.primaryColor,
                       child: LocalImage(
-                        imgPath: 'icons/png/tweet.png',
+                        imgPath: 'public/png/tweet.png',
                         width: 18.w,
                       ),
                     ),
@@ -82,7 +82,7 @@ class LinkedCirclesColumn extends StatelessWidget {
                       radius: 15.w,
 backgroundColor: AppColors.primaryColor,
                       child: LocalImage(
-                        imgPath: 'icons/png/linked.png',
+                        imgPath: 'public/png/linked.png',
                         width: 18.w,
                       ),
                     ),

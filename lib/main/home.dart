@@ -55,7 +55,7 @@ class _HomeMainState extends ConsumerState<HomeMain> {
               backgroundColor: AppColors.textColor.withOpacity(0.10),
               onPressed: () {},
               child: LocalImage(
-                imgPath: 'icons/png/chat_bg.png',
+                imgPath: 'public/png/chat_bg.png',
                 width: 30.w,
               ),
             )
