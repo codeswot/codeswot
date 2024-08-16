@@ -126,7 +126,7 @@ class Hero extends ConsumerWidget {
                           ),
                         ),
                       ],
-                    ), 
+                    ),
                   ],
                 ),
               ],

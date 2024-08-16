@@ -28,32 +28,36 @@ class _HomeMainState extends ConsumerState<HomeMain> {
   Widget build(BuildContext context) {
     final isDesktopAbove = ResponsiveBreakpoints.of(context).largerThan(TABLET);
     return Scaffold(
-        backgroundColor: AppColors.backgroundColor,
-        appBar: isDesktopAbove ? const CodeswotAppBar() : null,
-        body: isDesktopAbove
-          ? const Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
+      backgroundColor: AppColors.backgroundColor,
+      appBar: isDesktopAbove ? const CodeswotAppBar() : null,
+      body: isDesktopAbove
+          ? SizedBox(
+              width: 1.sw,
+              height: 1.sh,
+              child: const Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                BottomSocialLgMd(),
+                  BottomSocialLgMd(),
                   MainPageLgMd(),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    EmailLgMd(),
-                    BottomAnchorStyleLgMd(),
-                  ],
-                ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      EmailLgMd(),
+                      BottomAnchorStyleLgMd(),
+                    ],
+                  ),
                 ],
-              )
-            : const Undercontruction(),
+              ),
+            )
+          : const Undercontruction(),
       floatingActionButton: isDesktopAbove
           ? FloatingActionButton(
               backgroundColor: AppColors.textColor.withOpacity(0.10),
-          onPressed: () {},
-          child: LocalImage(
+              onPressed: () {},
+              child: LocalImage(
                 imgPath: 'icons/png/chat_bg.png',
                 width: 30.w,
-          ),
+              ),
             )
           : null,
     );

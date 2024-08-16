@@ -14,7 +14,7 @@ Future<void> main() async {
 }
 
 initApp() async {
-  Get.log('Initializing services ⏳..');
+  Get.log('Initializing services ⏳....');
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   FlutterNativeSplash.remove();
