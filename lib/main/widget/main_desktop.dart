@@ -46,7 +46,7 @@ class Hero extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      margin: EdgeInsets.only(top: 40.w, bottom: 40.w, right: 350.w),
+      margin: EdgeInsets.only(top: 60.w, bottom: 60.w, right: 350.w),
       decoration: BoxDecoration(
         color: AppColors.black.withOpacity(0.8),
         borderRadius: BorderRadius.circular(12.w),
@@ -106,25 +106,28 @@ class Hero extends ConsumerWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 150.w),
+                SizedBox(height: 50.w),
                 SizedBox(
                   height: 130.w,
                   child: const QuoteTextMdLg(),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
-                  child: Container(
-                    padding: EdgeInsets.all(8.w),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.green,
+                  child: InkWell(
+                    onTap: () {},
+                    child: Container(
+                      padding: EdgeInsets.all(8.w),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.green,
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      '> Know_More',
-                      style: GoogleFonts.nunito(
-                        fontSize: 14.sp,
-                        color: Colors.green,
+                      child: Text(
+                        '> Know_More',
+                        style: GoogleFonts.nunito(
+                          fontSize: 14.sp,
+                          color: Colors.green,
+                        ),
                       ),
                     ),
                   ),
