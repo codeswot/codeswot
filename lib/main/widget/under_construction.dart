@@ -16,21 +16,21 @@ class Undercontruction extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(left: 100.w, right: 100.w, top: 1.sh / 3),
       width: 1.sw,
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CodeSwotLogo(
-              fontSize: 100.sp,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CodeSwotLogo(
+            fontSize: 100.sp,
+          ),
+          SizedBox(height: 40.w),
+          Container(
+            padding: EdgeInsets.all(30.w),
+            decoration: BoxDecoration(
+              color: AppColors.textColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(10.w),
             ),
-            SizedBox(height: 40.w),
-            Container(
-              padding: EdgeInsets.all(30.w),
-              decoration: BoxDecoration(
-                color: AppColors.textColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(10.w),
-              ),
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -74,8 +74,8 @@ class Undercontruction extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
