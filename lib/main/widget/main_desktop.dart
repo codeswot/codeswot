@@ -1,5 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:codeswot/config/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,7 +46,7 @@ class Hero extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      margin: EdgeInsets.only(top: 70.w, bottom: 80.w, right: 350.w),
+      margin: EdgeInsets.only(top: 40.w, bottom: 40.w, right: 350.w),
       decoration: BoxDecoration(
         color: AppColors.black.withOpacity(0.8),
         borderRadius: BorderRadius.circular(12.w),
@@ -105,32 +107,29 @@ class Hero extends ConsumerWidget {
                   ],
                 ),
                 SizedBox(height: 150.w),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          SelectableText(
-                            '\$: “Always believe in you ability to achieve greatness”',
-                            style: GoogleFonts.sourceCodePro(
-                              fontSize: 18.sp,
-                              color: Colors.green,
-                            ),
-                          ),
-                          Text(
-                            '__ Mubarak I.',
-                            style: GoogleFonts.nunito(
-                              fontSize: 15.sp,
-                              color: Colors.green,
-                            ),
-                          ),
-                        ],
+                SizedBox(
+                  height: 130.w,
+                  child: const QuoteTextMdLg(),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    padding: EdgeInsets.all(8.w),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.green,
                       ),
                     ),
-                  ],
-                ),
+                    child: Text(
+                      '> Know_More',
+                      style: GoogleFonts.nunito(
+                        fontSize: 14.sp,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ),
+                )
+                  
               ],
             ),
           )
@@ -151,6 +150,75 @@ class Hero extends ConsumerWidget {
       default:
         return AppColors.accent;
     }
+  }
+}
+
+class QuoteTextMdLg extends StatefulWidget {
+  const QuoteTextMdLg({
+    super.key,
+  });
+
+  @override
+  State<QuoteTextMdLg> createState() => _QuoteTextMdLgState();
+}
+
+class _QuoteTextMdLgState extends State<QuoteTextMdLg> {
+  bool showAuthor = false;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  SelectableText(
+                    '\$:',
+                    style: GoogleFonts.sourceCodePro(
+                      fontSize: 18.sp,
+                      color: Colors.green,
+                    ),
+                  ),
+                  AnimatedTextKit(
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        'Always believe in you ability to achieve greatness',
+                        textStyle: GoogleFonts.sourceCodePro(
+                          fontSize: 18.sp,
+                          color: Colors.green,
+                        ),
+                        speed: const Duration(milliseconds: 100),
+                      ),
+                    ],
+                    totalRepeatCount: 1,
+                    pause: const Duration(milliseconds: 100),
+                    displayFullTextOnTap: true,
+                    stopPauseOnTap: true,
+                    onFinished: () {
+                      setState(() {
+                        showAuthor = true;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(height: 16.w),
+              if (showAuthor)
+                Text(
+                  '__ Mubarak I.',
+                  style: GoogleFonts.nunito(
+                    fontSize: 15.sp,
+                    color: Colors.green,
+                  ),
+                ).animate().fade(),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
 
