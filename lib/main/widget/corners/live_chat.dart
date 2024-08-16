@@ -10,14 +10,10 @@ class BottomAnchorStyleLgMd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      child: LocalImage(
-        imgPath: 'icons/png/crox.png',
-        width: 120.w,
-        color: AppColors.primaryColor.withOpacity(0.1),
-      ),
+    return LocalImage(
+      imgPath: 'icons/png/crox.png',
+      width: 120.w,
+      color: AppColors.primaryColor.withOpacity(0.1),
     );
   }
 }

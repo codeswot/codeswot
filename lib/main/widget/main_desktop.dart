@@ -44,9 +44,9 @@ class Hero extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      margin: EdgeInsets.only(top: 70.w, bottom: 80.w, right: 250.w),
+      margin: EdgeInsets.only(top: 70.w, bottom: 80.w, right: 350.w),
       decoration: BoxDecoration(
-        color: AppColors.black,
+        color: AppColors.black.withOpacity(0.8),
         borderRadius: BorderRadius.circular(12.w),
       ),
       child: Column(
@@ -69,8 +69,8 @@ class Hero extends ConsumerWidget {
                 (index) => Padding(
                   padding: EdgeInsets.only(
                     right: 8.w,
-                    top: 16.w,
-                    bottom: 16.w,
+                    top: 12.w,
+                    bottom: 12.w,
                   ),
                   child: TerminalAction(color: _getColorsByIndex(index)),
                 ),
@@ -108,24 +108,26 @@ class Hero extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        SelectableText(
-                          '\$: “Always believe in you ability to achieve greatness”',
-                          style: GoogleFonts.sourceCodePro(
-                            fontSize: 18.sp,
-                            color: Colors.green,
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          SelectableText(
+                            '\$: “Always believe in you ability to achieve greatness”',
+                            style: GoogleFonts.sourceCodePro(
+                              fontSize: 18.sp,
+                              color: Colors.green,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '__ Mubarak I.',
-                          style: GoogleFonts.nunito(
-                            fontSize: 15.sp,
-                            color: Colors.green,
+                          Text(
+                            '__ Mubarak I.',
+                            style: GoogleFonts.nunito(
+                              fontSize: 15.sp,
+                              color: Colors.green,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

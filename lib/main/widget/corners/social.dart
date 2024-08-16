@@ -11,21 +11,17 @@ class BottomSocialLgMd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0.w,
-      left: 0,
-      child: Stack(
-        children: [
-          Positioned(
-            bottom: -5.w,
-            child: LocalImage(
-              imgPath: 'icons/png/hash.png',
-              width: 120.w,
-            ),
+    return Stack(
+      children: [
+        Positioned(
+          bottom: -5.w,
+          child: LocalImage(
+            imgPath: 'icons/png/hash.png',
+            width: 120.w,
           ),
-          const LinkedCirclesColumn(),
-        ],
-      ),
+        ),
+        const LinkedCirclesColumn(),
+      ],
     );
   }
 }
