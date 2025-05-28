@@ -392,21 +392,21 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
         {/* Fixed Social Links - Bottom Left (Desktop Only) */}
         <div className="fixed left-6 bottom-0 z-20 hidden lg:flex flex-col items-center space-y-4">
           <a
-            href="#"
+            href="https://github.com/codeswot"
             className="p-2 text-gray-400 hover:text-[#64FFDA] transition-all duration-300 hover:scale-105 transform"
             aria-label="GitHub Profile"
           >
             <Github size={20} />
           </a>
           <a
-            href="#"
+            href="https://x.com/codeswot"
             className="p-2 text-gray-400 hover:text-[#64FFDA] transition-all duration-300 hover:scale-105 transform"
             aria-label="Twitter Profile"
           >
             <Twitter size={20} />
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/codeswot"
             className="p-2 text-gray-400 hover:text-[#64FFDA] transition-all duration-300 hover:scale-105 transform"
             aria-label="LinkedIn Profile"
           >
@@ -1106,7 +1106,7 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
                       aria-label="Social media links"
                     >
                       <a
-                        href="#"
+                        href="https://github.com/codeswot"
                         className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                         aria-label="GitHub Profile"
                         role="listitem"
@@ -1114,7 +1114,7 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
                         <Github size={18} />
                       </a>
                       <a
-                        href="#"
+                        href="https://x.com/codeswot"
                         className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                         aria-label="Twitter Profile"
                         role="listitem"
@@ -1122,7 +1122,7 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
                         <Twitter size={18} />
                       </a>
                       <a
-                        href="#"
+                        href="https://www.linkedin.com/in/codeswot/"
                         className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                         aria-label="LinkedIn Profile"
                         role="listitem"
