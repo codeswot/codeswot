@@ -51,7 +51,7 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
     <section
       id="home"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20"
+      className="min-h-screen flex items-start justify-center px-4 sm:px-6 pt-32"
     >
       <div className="max-w-4xl mx-auto w-full px-4 sm:px-8 lg:px-24">
         <div className="border border-[#64FFDA] rounded-lg overflow-hidden bg-[#1a2332] hover:scale-[1.005] transition-transform duration-500">
