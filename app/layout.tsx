@@ -1,5 +1,12 @@
 import type { Metadata } from 'next'
+import { Source_Code_Pro } from 'next/font/google'
 import './globals.css'
+
+const sourceCodePro = Source_Code_Pro({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-source-code-pro',
+})
 
 export const metadata: Metadata = {
   title: 'Codeswot',
@@ -34,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sourceCodePro.variable}`}>
       <body>{children}</body>
     </html>
   )

@@ -1343,6 +1343,16 @@ eval("// This regex will have fast negatives meaning valid identifiers may not p
 
 /***/ }),
 
+/***/ "(rsc)/./node_modules/next/font/google/target.css?{\"path\":\"app/layout.tsx\",\"import\":\"Source_Code_Pro\",\"arguments\":[{\"subsets\":[\"latin\"],\"display\":\"swap\",\"variable\":\"--font-source-code-pro\"}],\"variableName\":\"sourceCodePro\"}":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/font/google/target.css?{"path":"app/layout.tsx","import":"Source_Code_Pro","arguments":[{"subsets":["latin"],"display":"swap","variable":"--font-source-code-pro"}],"variableName":"sourceCodePro"} ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((module) => {
+
+eval("// Exports\nmodule.exports = {\n\t\"style\": {\"fontFamily\":\"'Source Code Pro', 'Source Code Pro Fallback'\",\"fontStyle\":\"normal\"},\n\t\"className\": \"__className_a06722\",\n\t\"variable\": \"__variable_a06722\"\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9mb250L2dvb2dsZS90YXJnZXQuY3NzP3tcInBhdGhcIjpcImFwcC9sYXlvdXQudHN4XCIsXCJpbXBvcnRcIjpcIlNvdXJjZV9Db2RlX1Byb1wiLFwiYXJndW1lbnRzXCI6W3tcInN1YnNldHNcIjpbXCJsYXRpblwiXSxcImRpc3BsYXlcIjpcInN3YXBcIixcInZhcmlhYmxlXCI6XCItLWZvbnQtc291cmNlLWNvZGUtcHJvXCJ9XSxcInZhcmlhYmxlTmFtZVwiOlwic291cmNlQ29kZVByb1wifSIsIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0EsV0FBVyxrRkFBa0Y7QUFDN0Y7QUFDQTtBQUNBIiwic291cmNlcyI6WyIvVXNlcnMvY29kZXN3b3Qvd29ya3NwYWNlL0dpdEh1Yi9jb2Rlc3dvdC9ub2RlX21vZHVsZXMvbmV4dC9mb250L2dvb2dsZS90YXJnZXQuY3NzP3tcInBhdGhcIjpcImFwcC9sYXlvdXQudHN4XCIsXCJpbXBvcnRcIjpcIlNvdXJjZV9Db2RlX1Byb1wiLFwiYXJndW1lbnRzXCI6W3tcInN1YnNldHNcIjpbXCJsYXRpblwiXSxcImRpc3BsYXlcIjpcInN3YXBcIixcInZhcmlhYmxlXCI6XCItLWZvbnQtc291cmNlLWNvZGUtcHJvXCJ9XSxcInZhcmlhYmxlTmFtZVwiOlwic291cmNlQ29kZVByb1wifSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBFeHBvcnRzXG5tb2R1bGUuZXhwb3J0cyA9IHtcblx0XCJzdHlsZVwiOiB7XCJmb250RmFtaWx5XCI6XCInU291cmNlIENvZGUgUHJvJywgJ1NvdXJjZSBDb2RlIFBybyBGYWxsYmFjaydcIixcImZvbnRTdHlsZVwiOlwibm9ybWFsXCJ9LFxuXHRcImNsYXNzTmFtZVwiOiBcIl9fY2xhc3NOYW1lX2EwNjcyMlwiLFxuXHRcInZhcmlhYmxlXCI6IFwiX192YXJpYWJsZV9hMDY3MjJcIlxufTtcbiJdLCJuYW1lcyI6W10sImlnbm9yZUxpc3QiOlswXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/font/google/target.css?{\"path\":\"app/layout.tsx\",\"import\":\"Source_Code_Pro\",\"arguments\":[{\"subsets\":[\"latin\"],\"display\":\"swap\",\"variable\":\"--font-source-code-pro\"}],\"variableName\":\"sourceCodePro\"}\n");
+
+/***/ }),
+
 /***/ "(ssr)/./node_modules/next/dist/client/app-build-id.js":
 /*!*******************************************************!*\
   !*** ./node_modules/next/dist/client/app-build-id.js ***!

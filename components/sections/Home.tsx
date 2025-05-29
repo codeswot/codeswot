@@ -78,13 +78,13 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
 
           {/* Terminal Content - Responsive Height */}
           <div className="p-4 sm:p-6 lg:p-8 font-mono h-[500px] sm:h-[520px] lg:h-[450px] flex flex-col justify-between">
-            <div className="text-[#64FFDA] text-sm sm:text-base lg:text-lg leading-relaxed whitespace-pre-line">
+            <div className="text-[#64FFDA] text-sm sm:text-base lg:text-lg leading-relaxed whitespace-pre-line font-mono">
               {staticText}
-              <div className="mt-3 sm:mt-4">
+              <div className="mt-3 sm:mt-4 font-mono">
                 $ "{terminalText}"
                 {showCursor && (
                   <span
-                    className="bg-[#64FFDA] text-[#1a2332]"
+                    className="bg-[#64FFDA] text-[#1a2332] font-mono"
                     aria-hidden="true"
                   >
                     |
@@ -94,8 +94,8 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
             </div>
 
             <div className="space-y-4 sm:space-y-6">
-              <div className="text-[#64FFDA] text-xs sm:text-sm">
-                <div className="text-[#64FFDA]/60 mt-1">--- Mubarak I.</div>
+              <div className="text-[#64FFDA] text-xs sm:text-sm font-mono">
+                <div className="text-[#64FFDA]/60 mt-1 font-mono">--- Mubarak I.</div>
               </div>
 
               <div className="flex justify-center sm:justify-end">
