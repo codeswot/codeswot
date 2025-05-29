@@ -1,21 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { Home } from "@/components/sections/Home";
-import { Navigation } from "@/components/sections/Navigation";
-import { About } from "@/components/sections/About";
-import { Experience } from "@/components/sections/Experience";
-import { Projects } from "@/components/sections/Projects";
-import { Contact } from "@/components/sections/Contact";
-import { Chat } from "@/components/sections/Chat";
-import { FloatingLinks } from "@/components/sections/FloatingLinks";
+import { useEffect, useRef, useState } from 'react';
+import { Home } from '@/components/sections/Home';
+import { Navigation } from '@/components/sections/Navigation';
+import { About } from '@/components/sections/About';
+import { Experience } from '@/components/sections/Experience';
+import { Projects } from '@/components/sections/Projects';
+import { Contact } from '@/components/sections/Contact';
+import { Chat } from '@/components/sections/Chat';
+import { FloatingLinks } from '@/components/sections/FloatingLinks';
 
 export default function Portfolio() {
   const [chatOpen, setChatOpen] = useState(false);
   const [chatExpanded, setChatExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(
+    new Set()
+  );
   const [activeNavItem, setActiveNavItem] = useState<number | null>(0);
   const [keyboardNavActive, setKeyboardNavActive] = useState(false);
 
@@ -29,12 +31,12 @@ export default function Portfolio() {
 
   // Navigation items configuration
   const navigationItems = [
-    { key: "0", label: "Home", section: "home", number: "00" },
-    { key: "1", label: "About", section: "about", number: "01" },
-    { key: "2", label: "Experience", section: "experience", number: "02" },
-    { key: "3", label: "Projects", section: "projects", number: "03" },
-    { key: "4", label: "Contact", section: "contact", number: "04" },
-    { key: "5", label: "Resume", section: "resume", number: "05" },
+    { key: '0', label: 'Home', section: 'home', number: '00' },
+    { key: '1', label: 'About', section: 'about', number: '01' },
+    { key: '2', label: 'Experience', section: 'experience', number: '02' },
+    { key: '3', label: 'Projects', section: 'projects', number: '03' },
+    { key: '4', label: 'Contact', section: 'contact', number: '04' },
+    { key: '5', label: 'Resume', section: 'resume', number: '05' },
   ];
 
   // Keyboard navigation
@@ -48,8 +50,8 @@ export default function Portfolio() {
       }
 
       const key = event.key;
-      const navItemIndex = navigationItems.findIndex((item) =>
-        item.key === key
+      const navItemIndex = navigationItems.findIndex(
+        (item) => item.key === key
       );
 
       if (navItemIndex !== -1) {
@@ -61,8 +63,8 @@ export default function Portfolio() {
         const announcement = `Navigating to ${navItem.label} section`;
         announceToScreenReader(announcement);
 
-        if (navItem.section === "resume") {
-          console.log("Resume action triggered via keyboard");
+        if (navItem.section === 'resume') {
+          console.log('Resume action triggered via keyboard');
           // Potentially open resume link or download
           // window.open("/resume.pdf", "_blank"); // Example
         } else {
@@ -75,25 +77,19 @@ export default function Portfolio() {
       }
     };
 
-    const handleKeyUp = () => {
-      // No need to reset keyboardNavActive here as it's timed out
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [navigationItems]);
 
   // Screen reader announcements
   const announceToScreenReader = (message: string) => {
-    const announcement = document.createElement("div");
-    announcement.setAttribute("aria-live", "polite");
-    announcement.setAttribute("aria-atomic", "true");
-    announcement.className = "sr-only";
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.className = 'sr-only';
     announcement.textContent = message;
     document.body.appendChild(announcement);
 
@@ -112,7 +108,7 @@ export default function Portfolio() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
+      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
     );
 
     Object.values(sectionRefs).forEach((ref) => {
@@ -127,13 +123,13 @@ export default function Portfolio() {
   // Prevent body scroll when chat is open
   useEffect(() => {
     if (chatOpen || mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [chatOpen, mobileMenuOpen]);
 
@@ -143,9 +139,9 @@ export default function Portfolio() {
     };
 
     checkMobile();
-    window.addEventListener("resize", checkMobile);
+    window.addEventListener('resize', checkMobile);
 
-    return () => window.removeEventListener("resize", checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Auto-expand on mobile when chat opens
@@ -161,19 +157,19 @@ export default function Portfolio() {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
       });
       setMobileMenuOpen(false);
     }
   };
 
   const handleNavItemClick = (sectionId: string, index: number) => {
-    if (sectionId === "resume") {
+    if (sectionId === 'resume') {
       // Handle resume action
       window.open(
-        "https://drive.google.com/file/d/1R3IyA2CENW81cIanieJWI2bE8RFY0N7f/view?usp=sharing",
+        'https://drive.google.com/file/d/1R3IyA2CENW81cIanieJWI2bE8RFY0N7f/view?usp=sharing'
       );
     } else {
       scrollToSection(sectionId);
@@ -192,9 +188,9 @@ export default function Portfolio() {
 
       <div
         className={`min-h-screen bg-[#1a2332] text-white relative ${
-          chatOpen || mobileMenuOpen ? "overflow-hidden" : ""
+          chatOpen || mobileMenuOpen ? 'overflow-hidden' : ''
         }`}
-        style={{ scrollBehavior: "smooth" }}
+        style={{ scrollBehavior: 'smooth' }}
       >
         {/* Chat Overlay Blur */}
         {chatOpen && (
@@ -226,10 +222,22 @@ export default function Portfolio() {
 
         {/* Main Content */}
         <Home sectionRef={sectionRefs.home} />
-        <About sectionRef={sectionRefs.about} visibleSections={visibleSections} />
-        <Experience sectionRef={sectionRefs.experience} visibleSections={visibleSections} />
-        <Projects sectionRef={sectionRefs.projects} visibleSections={visibleSections} />
-        <Contact sectionRef={sectionRefs.contact} visibleSections={visibleSections} />
+        <About
+          sectionRef={sectionRefs.about}
+          visibleSections={visibleSections}
+        />
+        <Experience
+          sectionRef={sectionRefs.experience}
+          visibleSections={visibleSections}
+        />
+        <Projects
+          sectionRef={sectionRefs.projects}
+          visibleSections={visibleSections}
+        />
+        <Contact
+          sectionRef={sectionRefs.contact}
+          visibleSections={visibleSections}
+        />
 
         {/* Chat Widget */}
         <Chat
