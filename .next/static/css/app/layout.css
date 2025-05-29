@@ -639,6 +639,9 @@ video {
 .relative {
   position: relative;
 }
+.sticky {
+  position: sticky;
+}
 .inset-0 {
   inset: 0px;
 }
@@ -996,6 +999,9 @@ video {
 }
 .h-\[400px\] {
   height: 400px;
+}
+.h-\[calc\(100vh-180px\)\] {
+  height: calc(100vh - 180px);
 }
 .max-h-96 {
   max-height: 24rem;

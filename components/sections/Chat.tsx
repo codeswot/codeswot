@@ -101,7 +101,7 @@ export const Chat = ({
           <div
             id="chat-description"
             className={`flex-1 px-4 py-4 space-y-4 overflow-y-auto ${
-              chatExpanded || isMobile ? "h-[calc(100vh-160px)]" : "h-64"
+              chatExpanded || isMobile ? "h-[calc(100vh-180px)]" : "h-64"
             }`}
             role="log"
             aria-label="Chat messages"
@@ -129,7 +129,7 @@ export const Chat = ({
             ))}
           </div>
 
-          <div className="px-4 py-3 border-t border-[#64FFDA]/20">
+          <div className="px-4 py-3 border-t border-[#64FFDA]/20 bg-[#1a2332] sticky bottom-0">
             <div className="flex items-center space-x-2">
               <label htmlFor="chat-input" className="sr-only">
                 Type your message
