@@ -35,7 +35,12 @@ export const Navigation = ({
         <div className="flex items-center justify-between h-16">
           <div className="text-xl font-bold text-[#64FFDA] hover:scale-105 transition-transform duration-300">
             <a href="#home" aria-label="Codeswot - Home">
-              {"{"}C{"}"}
+              <div className="flex items-center select-none">
+                <span className="text-[#64FFDA] font-mono text-2xl font-bold">{'{'}</span>
+                <span className="text-[#64FFDA] font-mono text-2xl font-extrabold">C</span>
+                <span className="text-[#64FFDA] font-mono text-2xl font-bold">{'}'}</span>
+                <span className="text-gray-100 font-mono text-2xl font-semibold">odeswot</span>
+              </div>
             </a>
           </div>
 
