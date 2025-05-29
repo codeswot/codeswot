@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Home } from "@/components/portfolio/Home";
-import { Navigation } from "@/components/portfolio/Navigation";
-import { About } from "@/components/portfolio/About";
-import { Experience } from "@/components/portfolio/Experience";
-import { Projects } from "@/components/portfolio/Projects";
-import { Contact } from "@/components/portfolio/Contact";
-import { Chat } from "@/components/portfolio/Chat";
-import { FloatingLinks } from "@/components/portfolio/FloatingLinks";
+import { Home } from "@/components/sections/Home";
+import { Navigation } from "@/components/sections/Navigation";
+import { About } from "@/components/sections/About";
+import { Experience } from "@/components/sections/Experience";
+import { Projects } from "@/components/sections/Projects";
+import { Contact } from "@/components/sections/Contact";
+import { Chat } from "@/components/sections/Chat";
+import { FloatingLinks } from "@/components/sections/FloatingLinks";
 
 export default function Portfolio() {
   const [chatOpen, setChatOpen] = useState(false);
