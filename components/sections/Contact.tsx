@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, MessageSquare } from "lucide-react";
+import { ContactForm } from "@/components/ContactForm";
+import { useState } from "react";
 
 interface ContactProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
@@ -7,6 +9,7 @@ interface ContactProps {
 }
 
 export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
+  const [showContactForm, setShowContactForm] = useState(false);
   return (
     <section
       id="contact"
@@ -112,25 +115,53 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
                   Email Me
                 </h5>
                 <Button
+                  onClick={() => window.open('mailto:mubarak@codeswot.io')}
                   className="w-full bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300"
                   aria-label="Send email to mubarak@codeswot.io"
                 >
                   mubarak@codeswot.io
                 </Button>
               </div>
+
+              {/* Contact Form Option */}
+              <div className="bg-[#1a2332] border border-[#64FFDA]/20 rounded-lg p-4 hover:border-[#64FFDA]/50 hover:scale-[1.02] transition-all duration-300">
+                <h5 className="text-white font-medium mb-3 flex items-center justify-center">
+                  <MessageSquare size={16} className="mr-2" />
+                  Send Message
+                </h5>
+                <Button
+                  onClick={() => setShowContactForm(true)}
+                  className="w-full bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300"
+                  aria-label="Open contact form"
+                >
+                  Contact Form
+                </Button>
+              </div>
             </div>
           </div>
 
-          {/* Desktop Email Button */}
+          {/* Desktop Buttons */}
           <div className="hidden lg:block">
             <div className="text-gray-400 my-8">or</div>
-            <Button
-              className="bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300 px-6 py-2"
-              size="lg"
-              aria-label="Send email to mubarak@codeswot.io"
-            >
-              Email me_
-            </Button>
+            <div className="flex gap-4 justify-center">
+              <Button
+                onClick={() => window.open('mailto:mubarak@codeswot.io')}
+                className="bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300 px-6 py-2"
+                size="lg"
+                aria-label="Send email to mubarak@codeswot.io"
+              >
+                Email me_
+              </Button>
+              <Button
+                onClick={() => setShowContactForm(true)}
+                className="bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300 px-6 py-2"
+                size="lg"
+                aria-label="Open contact form"
+              >
+                <MessageSquare className="mr-2 h-4 w-4" />
+                Contact Form
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -192,6 +223,25 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
             </span>
           </div>
         </div>
+
+        {/* Contact Form Modal */}
+        {showContactForm && (
+          <div 
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setShowContactForm(false)}
+          >
+            <div onClick={(e) => e.stopPropagation()}>
+              <ContactForm />
+              <Button
+                onClick={() => setShowContactForm(false)}
+                variant="ghost"
+                className="mt-4 text-gray-400 hover:text-white mx-auto block"
+              >
+                Close
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ import { Projects } from '@/components/sections/Projects';
 import { Contact } from '@/components/sections/Contact';
 import { Chat } from '@/components/sections/Chat';
 import { FloatingLinks } from '@/components/sections/FloatingLinks';
+import { useFirebaseAnalytics } from '@/hooks/useFirebaseAnalytics';
 
 export default function Portfolio() {
   const [chatOpen, setChatOpen] = useState(false);
@@ -20,6 +21,9 @@ export default function Portfolio() {
   );
   const [activeNavItem, setActiveNavItem] = useState<number | null>(0);
   const [keyboardNavActive, setKeyboardNavActive] = useState(false);
+
+  // Initialize Firebase analytics
+  useFirebaseAnalytics();
 
   const sectionRefs = {
     home: useRef(null),
@@ -72,7 +76,7 @@ export default function Portfolio() {
         }
 
         setTimeout(() => {
-          setKeyboardNavActive(false); // Visual cue is temporary
+          setKeyboardNavActive(false); // Visual cue
         }, 1000);
       }
     };

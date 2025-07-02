@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
+import { trackProjectView } from "@/lib/firestore";
 
 interface ProjectsProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
@@ -9,6 +10,7 @@ interface ProjectsProps {
 export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
   const projects = [
     {
+      id: "palgo-com",
       name: "Palgo.com",
       description:
         "Social  e-commerce you can offer your creative services, sell products",
@@ -16,6 +18,7 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
       technologies: ["Flutter", "Firebase", "Node.js"],
     },
     {
+      id: "nasbox",
       name: "NasBox",
       description:
         "Custom proprietary AOSP media player and more",
@@ -23,6 +26,7 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
       technologies: ["AOSP", "Flutter", "FFMPEG", "python"],
     },
     {
+      id: "niceapp",
       name: "NiceApp",
       description:
         "An in house communication app for the Nigerian Customs",
@@ -30,6 +34,7 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
       technologies: ["Supabase", "SQL", "Flutter"],
     },
     {
+      id: "instructra",
       name: "Instructra",
       description:
         "Instructra helps you find driving instructors, book flexible lessons.",
@@ -37,6 +42,7 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
       technologies: ["Supabase", "Flutter"],
     },
     {
+      id: "nahdi",
       name: "Nahdi",
       description:
         "e-commerece mobile app for the Nahdi-online store",
@@ -44,6 +50,7 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
       technologies: ["Flutter"],
     },
     {
+      id: "nm-japanese-dictionary",
       name: "NM Japanese Dictionary",
       description:
         "Nihongo Master Japanese dictionary, helps user learn kanjis and words in japanese",
@@ -51,6 +58,10 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
       technologies: ["Flutter", "Firebase", "sqlite"],
     },
   ];
+
+  const handleProjectClick = async (projectId: string) => {
+    await trackProjectView(projectId);
+  };
 
   return (
     <section
@@ -74,8 +85,8 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {projects.map((project, index) => (
             <article
-              key={index}
-              className={`bg-[#1a2332] border-[#64FFDA]/20 rounded-lg overflow-hidden hover:border-[#64FFDA]/50 hover:scale-[1.02] transition-all duration-300 ${
+              key={project.id}
+              className={`bg-[#1a2332] border-[#64FFDA]/20 rounded-lg overflow-hidden hover:border-[#64FFDA]/50 hover:scale-[1.02] transition-all duration-300 cursor-pointer ${
                 visibleSections.has("projects")
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -85,6 +96,16 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
                   ? `${index * 200}ms`
                   : "0ms",
               }}
+              onClick={() => handleProjectClick(project.id)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleProjectClick(project.id);
+                }
+              }}
+              aria-label={`View details for ${project.name} project`}
             >
               <CardContent className="p-0">
                 <div className="relative overflow-hidden">
