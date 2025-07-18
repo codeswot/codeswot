@@ -16,13 +16,13 @@ Specialties: User Interface | Problem Solving | User Experience | Testing | Desi
 <br>
 
 ### 🤔 More about Me:
-- 🔭 &nbsp; I’m currently working on **PalGo**
+- 🔭 &nbsp; Contributing to [Whitenoise](https://www.whitenoise.chat/)
 - 🤝 &nbsp; I’m looking to collaborate on open source Projects
 - 🌱 &nbsp; I’m currently learning Rust;
 - ❤️ &nbsp; I Love Bitcoin ⛓;
 - 👨🏻‍💻 &nbsp; Most of my projects are available on [Github](https://github.com/codeswot=repositories)
 - 💬 &nbsp; Ask me anything tech related, I am happy to help;
-- 📫 &nbsp; Feel free to ping me on [Twitter](https://twitter.com/codeswot/) and [LinkedIn](https://www.linkedin.com/in/mubarak-sa-eed-ibrahim-ba1385140/)
+- 📫 &nbsp; Feel free to ping me on [Twitter](https://twitter.com/codeswot/) and [LinkedIn](https://www.linkedin.com/in/codeswot/)
 - 🎥 &nbsp; you can watch my videos YouTube 😋 [YouTube](https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g) (Coming Soon !!)
 - 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post](https://codeswot.medium.com/)
 - 🕸 &nbsp; Check out my Portofolio [Codeswot](https://codeswot.dev)
