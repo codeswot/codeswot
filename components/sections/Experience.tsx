@@ -1,51 +1,53 @@
+import type { ExperienceItem } from "@/lib/firestore";
+import { Timestamp } from "firebase/firestore";
+
 interface ExperienceProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
   visibleSections: Set<string>;
+  experience?: ExperienceItem[];
 }
 
-export const Experience = ({ sectionRef, visibleSections }: ExperienceProps) => {
-  const experiences = [
-    {
-      company: "Moniepoint Group",
-      position: "Senior Mobile Engineer",
-      period: "Dec 2024 - Present · 6 mos",
-      description:
-        `Built scalable Flutter apps using MVM architecture at Moniepoint, enhancing problem-solving skills and maintaining 80% test coverage through robust widget, unit, and integration tests.`,
-      current: true,
-      items: [],
-    },
-    {
-      company: "Feature/Mind",
-      position: "Mobile Developer",
-      period: "Mar 2024 - Oct 2024 · 8 mos",
-      description:
-        "Contributed to mobile development of the Nahdi medical e-commerce app (1M+ users in UAE, Saudi Arabia, and Kuwait), delivering features like coupon integration, collaborating with backend and QA teams, and ensuring production-quality code through peer reviews.",
-      items: [],
-    },
-    {
-      company: "Palgo.com",
-      position: "Full Stack Engineer",
-      period: "Oct 2021 - Mar 2024 · 2 yrs 6 mos",
-      description:
-        `Developed mobile features in close collaboration with designers, implemented backend integrations via Node.js and Firebase, optimized payouts with KIN blockchain (90% faster than Stripe), enhanced UX in Flutter, and reduced Firebase usage through an offline-first chat system with SQLite.`,
-      items: [],
-    },
-    {
-      company: "Dondich Creative, LLC",
-      position: "Mobile Engineer",
-      period: "Nov 2022 - Apr 2023 · 6 mos",
-      description: `Led Flutter development for language learning apps like Nihongo Master and Kanji Master, streamlining CI/CD with Codemagic, optimizing state management with Riverpod, and improving search performance with SQLite FTS5.`,
-      items: [],
-    },
-    {
-      company: "LEXINGTON TECHNOLOGIES LTD",
-      position: "Mobile Developer",
-      period: "Aug 2018 - Oct 2021 . 3 yrs 3 mos",
-      description:
-        "Led mobile development for cross-platform Flutter solutions serving clients and government, migrating legacy Kotlin code, implementing geofencing and MQTT with cached APIs, and spearheading the Naamis inventory system across web, desktop, and mobile.",
-      items: [],
-    },
-  ];
+export const Experience = ({ sectionRef, visibleSections, experience = [] }: ExperienceProps) => {
+  const toJsDate = (value: Date | Timestamp | null | undefined): Date | null => {
+    if (!value) return null;
+    return value instanceof Date ? value : value.toDate();
+  };
+
+  const formatDuration = (from: Date | null, to: Date | null): string => {
+    if (!from) return '';
+    const end = to || new Date();
+    let months = (end.getFullYear() - from.getFullYear()) * 12 + (end.getMonth() - from.getMonth());
+    if (end.getDate() < from.getDate()) months -= 1;
+    const years = Math.floor(months / 12);
+    const remMonths = months % 12;
+    const parts: string[] = [];
+    if (years > 0) parts.push(`${years} ${years === 1 ? 'yr' : 'yrs'}`);
+    if (remMonths > 0 || parts.length === 0) parts.push(`${remMonths} ${remMonths === 1 ? 'mo' : 'mos'}`);
+    return parts.join(' ');
+  };
+
+  const sorted = [...experience].sort((a, b) => {
+    const ad = toJsDate(a.start)?.getTime() || 0;
+    const bd = toJsDate(b.start)?.getTime() || 0;
+    return bd - ad;
+  });
+
+  const experiences = sorted.map((e) => {
+    const start = toJsDate(e.start);
+    const end = toJsDate(e.end ?? null);
+    const left = start ? `${start.toLocaleString('default', { month: 'short' })} ${start.getFullYear()}` : '';
+    const right = e.current ? 'Present' : end ? `${end.toLocaleString('default', { month: 'short' })} ${end.getFullYear()}` : '';
+    const duration = formatDuration(start, end);
+    const period = `${left} - ${right} · ${duration}`.trim();
+    return {
+      company: e.company,
+      position: e.title,
+      period,
+      description: e.desc,
+      current: !!e.current,
+      links: e.links || [],
+    };
+  });
 
   return (
     <section

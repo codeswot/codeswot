@@ -2,13 +2,19 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Twitter, MessageSquare } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { useState } from "react";
+import { trackLinkClick } from "@/lib/firestore";
 
 interface ContactProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
   visibleSections: Set<string>;
+  footTag?: string;
+  githubUrl?: string;
+  twitterUrl?: string;
+  linkedInUrl?: string;
+  email?: string;
 }
 
-export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
+export const Contact = ({ sectionRef, visibleSections, footTag, githubUrl, twitterUrl, linkedInUrl, email }: ContactProps) => {
   const [showContactForm, setShowContactForm] = useState(false);
   return (
     <section
@@ -82,26 +88,29 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
                   aria-label="Social media links"
                 >
                   <a
-                    href="https://github.com/codeswot"
+                    href={githubUrl || "https://github.com/codeswot"}
                     className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                     aria-label="GitHub Profile"
                     role="listitem"
+                    onClick={() => trackLinkClick('github', githubUrl || 'https://github.com/codeswot').catch(()=>{})}
                   >
                     <Github size={18} />
                   </a>
                   <a
-                    href="https://x.com/codeswot"
+                    href={twitterUrl || "https://x.com/codeswot"}
                     className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                     aria-label="Twitter Profile"
                     role="listitem"
+                    onClick={() => trackLinkClick('twitter', twitterUrl || 'https://x.com/codeswot').catch(()=>{})}
                   >
                     <Twitter size={18} />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/codeswot/"
+                    href={linkedInUrl || "https://www.linkedin.com/in/codeswot/"}
                     className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                     aria-label="LinkedIn Profile"
                     role="listitem"
+                    onClick={() => trackLinkClick('linkedin', linkedInUrl || 'https://www.linkedin.com/in/codeswot/').catch(()=>{})}
                   >
                     <Linkedin size={18} />
                   </a>
@@ -115,11 +124,11 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
                   Email Me
                 </h5>
                 <Button
-                  onClick={() => window.open('mailto:mubarak@codeswot.io')}
+                  onClick={() => { trackLinkClick('email', `mailto:${email || 'mubarak@codeswot.me'}`).catch(()=>{}); window.open(`mailto:${email || 'mubarak@codeswot.me'}`); }}
                   className="w-full bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300"
-                  aria-label="Send email to mubarak@codeswot.io"
+                  aria-label={`Send email to ${email || 'mubarak@codeswot.me'}`}
                 >
-                  mubarak@codeswot.io
+                  {email || 'mubarak@codeswot.io'}
                 </Button>
               </div>
 
@@ -145,10 +154,10 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
             <div className="text-gray-400 my-8">or</div>
             <div className="flex gap-4 justify-center">
               <Button
-                onClick={() => window.open('mailto:mubarak@codeswot.io')}
+                onClick={() => { trackLinkClick('email', `mailto:${email || 'mubarak@codeswot.io'}`).catch(()=>{}); window.open(`mailto:${email || 'mubarak@codeswot.io'}`); }}
                 className="bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300 px-6 py-2"
                 size="lg"
-                aria-label="Send email to mubarak@codeswot.io"
+                aria-label={`Send email to ${email || 'mubarak@codeswot.io'}`}
               >
                 Email me_
               </Button>
@@ -176,7 +185,7 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
           aria-label="Social media links"
         >
           <a
-            href="#"
+            href={githubUrl || "https://github.com/codeswot"}
             className="p-3 bg-[#1a2332] border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
             aria-label="GitHub Profile"
             role="listitem"
@@ -184,7 +193,7 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
             <Github size={20} />
           </a>
           <a
-            href="#"
+            href={twitterUrl || "https://x.com/codeswot"}
             className="p-3 bg-[#1a2332] border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
             aria-label="Twitter Profile"
             role="listitem"
@@ -192,7 +201,7 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
             <Twitter size={20} />
           </a>
           <a
-            href="#"
+            href={linkedInUrl || "https://www.linkedin.com/in/codeswot/"}
             className="p-3 bg-[#1a2332] border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
             aria-label="LinkedIn Profile"
             role="listitem"
@@ -209,19 +218,9 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
           }`}
         >
           <p className="mb-2">
-            Built with coffee ☕, ReactJs and fun stuff
+            {footTag || "Built with coffee ☕, ReactJs and fun stuff by codeswot"}
           </p>
-          <p className="mb-4">by codeswot</p>
-          <div className="flex justify-center items-center space-x-6">
-            <span className="flex items-center space-x-1 hover:scale-[1.02] transition-transform duration-300">
-              <span aria-hidden="true">⭐</span>
-              <span>500+</span>
-            </span>
-            <span className="flex items-center space-x-1 hover:scale-[1.02] transition-transform duration-300">
-              <span aria-hidden="true">🚀</span>
-              <span>15+</span>
-            </span>
-          </div>
+          <p className="mb-4">{new Date().getFullYear()}</p>          
         </div>
 
         {/* Contact Form Modal */}
@@ -234,8 +233,8 @@ export const Contact = ({ sectionRef, visibleSections }: ContactProps) => {
               <ContactForm />
               <Button
                 onClick={() => setShowContactForm(false)}
-                variant="ghost"
-                className="mt-4 text-gray-400 hover:text-white mx-auto block"
+                variant="link"
+                className="mt-4 text-gray-400 hover:text-[#64FFDA] mx-auto block"
               >
                 Close
               </Button>

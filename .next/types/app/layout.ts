@@ -1,4 +1,4 @@
-// File: /Users/codeswot/workspace/GitHub/codeswot/app/layout.tsx
+// File: /Users/codeswot/workspace/github/codeswot/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,28 +1,44 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import type { Quote } from "@/lib/firestore";
 
 interface HomeProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
+  introHeader?: string;
+  intro?: string;
+  quotes?: Quote[];
 }
 
-export const Home = ({ sectionRef }: HomeProps) => {
+export const Home = ({ sectionRef, introHeader, intro, quotes = [] }: HomeProps) => {
   const [terminalText, setTerminalText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
+  const [quoteIndex, setQuoteIndex] = useState(0);
 
-  const staticText = `$ Hi 👋 I am Codeswot I Turn code into Stuff.
+  const staticText = `$ ${introHeader || "Hi 👋 I am Codeswot I Turn code into Stuff."}
 
-Your Friendly neighbourhood developer With great power comes great responsibilities, Hard work, studies and constant coding I have acquired the awesome power of building amazing applications and software solutions. I am a mobile developer with a passion for creating beautiful and functional user experiences.`;
+${intro || "Your Friendly neighbourhood developer With great power comes great responsibilities, Hard work, studies and constant coding I have acquired the awesome power of building amazing applications and software solutions. I am a mobile developer with a passion for creating beautiful and functional user experiences."}`;
 
-  const animatedText = `Always believe in you ability to achieve greatness`;
+  const animatedText = quotes[quoteIndex]?.quote || `Always believe in you ability to achieve greatness`;
 
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < animatedText.length) {
-        setTerminalText(animatedText.slice(0, index + 1));
-        index++;
+    if (quotes.length) {
+      const start = Math.floor(Math.random() * quotes.length);
+      setQuoteIndex(start);
+    }
+  }, [quotes.length]);
+
+  useEffect(() => {
+    let charIndex = 0;
+    setTerminalText("");
+    const typeTimer = setInterval(() => {
+      if (charIndex < animatedText.length) {
+        setTerminalText(animatedText.slice(0, charIndex + 1));
+        charIndex++;
       } else {
-        clearInterval(timer);
+        clearInterval(typeTimer);
+        setTimeout(() => {
+          setQuoteIndex((prev) => (quotes.length ? (prev + 1) % quotes.length : prev));
+        }, 1500);
       }
     }, 50);
 
@@ -31,10 +47,10 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
     }, 500);
 
     return () => {
-      clearInterval(timer);
+      clearInterval(typeTimer);
       clearInterval(cursorTimer);
     };
-  }, []);
+  }, [animatedText, quotes.length]);
 
   const scrollToAbout = () => {
     const aboutSection = document.getElementById("about");
@@ -94,9 +110,9 @@ Your Friendly neighbourhood developer With great power comes great responsibilit
             </div>
 
             <div className="space-y-4 sm:space-y-6">
-              <div className="text-[#64FFDA] text-xs sm:text-sm font-mono">
-                <div className="text-[#64FFDA]/60 mt-1 font-mono">--- Mubarak I.</div>
-              </div>
+            <div className="text-[#64FFDA] text-xs sm:text-sm font-mono">
+              <div className="text-[#64FFDA]/60 mt-1 font-mono">--- {quotes[quoteIndex]?.author || 'Codeswot'}</div>
+            </div>
 
               <div className="flex justify-center sm:justify-end">
                 <Button

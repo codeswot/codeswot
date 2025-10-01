@@ -1,66 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
 import { trackProjectView } from "@/lib/firestore";
+import type { ProjectWithTechs } from "@/lib/firestore";
 
 interface ProjectsProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
   visibleSections: Set<string>;
+  projects?: ProjectWithTechs[];
 }
 
-export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
-  const projects = [
-    {
-      id: "palgo-com",
-      name: "Palgo.com",
-      description:
-        "Social  e-commerce you can offer your creative services, sell products",
-      image: "https://media.licdn.com/dms/image/v2/C560BAQHH3Odi6clGLQ/company-logo_200_200/company-logo_200_200/0/1643747796582/palgo_com_logo?e=1753920000&v=beta&t=DqqXJQ7MPGlOYK_lALPQp_2iijJJXnu-VbLJzg12pKU",
-      technologies: ["Flutter", "Firebase", "Node.js"],
-    },
-    {
-      id: "nasbox",
-      name: "NasBox",
-      description:
-        "Custom proprietary AOSP media player and more",
-      image: "/placeholder.svg?height=200&width=300",
-      technologies: ["AOSP", "Flutter", "FFMPEG", "python"],
-    },
-    {
-      id: "niceapp",
-      name: "NiceApp",
-      description:
-        "An in house communication app for the Nigerian Customs",
-      image: "/placeholder.svg?height=200&width=300",
-      technologies: ["Supabase", "SQL", "Flutter"],
-    },
-    {
-      id: "instructra",
-      name: "Instructra",
-      description:
-        "Instructra helps you find driving instructors, book flexible lessons.",
-      image: "/placeholder.svg?height=200&width=300",
-      technologies: ["Supabase", "Flutter"],
-    },
-    {
-      id: "nahdi",
-      name: "Nahdi",
-      description:
-        "e-commerece mobile app for the Nahdi-online store",
-      image: "/placeholder.svg?height=200&width=300",
-      technologies: ["Flutter"],
-    },
-    {
-      id: "nm-japanese-dictionary",
-      name: "NM Japanese Dictionary",
-      description:
-        "Nihongo Master Japanese dictionary, helps user learn kanjis and words in japanese",
-      image: "https://www.nihongomaster.com/build/assets/main-47f739e0.png",
-      technologies: ["Flutter", "Firebase", "sqlite"],
-    },
-  ];
+export const Projects = ({ sectionRef, visibleSections, projects = [] }: ProjectsProps) => {
 
   const handleProjectClick = async (projectId: string) => {
-    await trackProjectView(projectId);
+    try { await trackProjectView(projectId); } catch {}
   };
 
   return (
@@ -86,7 +38,7 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
           {projects.map((project, index) => (
             <article
               key={project.id}
-              className={`bg-[#1a2332] border-[#64FFDA]/20 rounded-lg overflow-hidden hover:border-[#64FFDA]/50 hover:scale-[1.02] transition-all duration-300 cursor-pointer ${
+              className={`group bg-[#1a2332] border-[#64FFDA]/20 rounded-lg overflow-hidden hover:border-[#64FFDA]/50 transform-gpu will-change-transform hover:scale-[1.01] transition-transform duration-300 cursor-pointer ${
                 visibleSections.has("projects")
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -105,25 +57,28 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
                   handleProjectClick(project.id);
                 }
               }}
-              aria-label={`View details for ${project.name} project`}
+              aria-label={`View details for ${project.title} project`}
             >
-              <CardContent className="p-0">
-                <div className="relative overflow-hidden">
+              <CardContent className="p-0 rounded-lg overflow-hidden">
+                <div className="relative overflow-hidden bg-black rounded-lg">
                   <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={`${project.name} project screenshot`}
-                    className="w-full h-40 object-cover hover:scale-105 transition-transform duration-500"
+                    src={project.icon || "/placeholder.svg"}
+                    alt={`${project.title} project screenshot`}
+                    className="w-full h-40 object-cover transition-transform duration-500 transform-gpu will-change-transform group-hover:scale-102 rounded-lg"
                   />
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-[#1a2332]/90 to-transparent"
+                    className="pointer-events-none absolute inset-0 bg-[#000000A4]/60 backdrop-blur-md will-change-[opacity] rounded-lg"
                     aria-hidden="true"
                   >
                   </div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-lg font-semibold text-white mb-2 hover:text-[#64FFDA] transition-colors duration-300">
-                      {project.name}
+                      {project.title}
                     </h3>
-                    <p className="text-gray-300 mb-3 text-sm leading-relaxed">
+                    <p
+                      className="text-gray-300 mb-3 text-sm leading-relaxed"
+                      style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+                    >
                       {project.description}
                     </p>
                     <div
@@ -137,7 +92,7 @@ export const Projects = ({ sectionRef, visibleSections }: ProjectsProps) => {
                           className="px-2 py-1 bg-[#64FFDA]/20 text-[#64FFDA] text-xs rounded hover:scale-[1.02] transition-transform duration-300"
                           role="listitem"
                         >
-                          {tech}
+                          {tech.name}
                         </span>
                       ))}
                     </div>

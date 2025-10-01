@@ -10,6 +10,8 @@ import { Contact } from '@/components/sections/Contact';
 import { Chat } from '@/components/sections/Chat';
 import { FloatingLinks } from '@/components/sections/FloatingLinks';
 import { useFirebaseAnalytics } from '@/hooks/useFirebaseAnalytics';
+import { trackSectionView, trackLinkClick } from '@/lib/firestore';
+import { getProfile, getQuotes, getMentors, getExperience, getProjectsWithTechs, type Profile, type Quote, type Mentor, type ExperienceItem, type ProjectWithTechs } from '@/lib/firestore';
 
 export default function Portfolio() {
   const [chatOpen, setChatOpen] = useState(false);
@@ -21,6 +23,12 @@ export default function Portfolio() {
   );
   const [activeNavItem, setActiveNavItem] = useState<number | null>(0);
   const [keyboardNavActive, setKeyboardNavActive] = useState(false);
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [quotes, setQuotes] = useState<Quote[]>([]);
+  const [mentors, setMentors] = useState<Mentor[]>([]);
+  const [experience, setExperience] = useState<ExperienceItem[]>([]);
+  const [projects, setProjects] = useState<ProjectWithTechs[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Initialize Firebase analytics
   useFirebaseAnalytics();
@@ -69,14 +77,13 @@ export default function Portfolio() {
 
         if (navItem.section === 'resume') {
           console.log('Resume action triggered via keyboard');
-          // Potentially open resume link or download
-          // window.open("/resume.pdf", "_blank"); // Example
+    
         } else {
           scrollToSection(navItem.section);
         }
 
         setTimeout(() => {
-          setKeyboardNavActive(false); // Visual cue
+          setKeyboardNavActive(false); 
         }, 1000);
       }
     };
@@ -88,7 +95,7 @@ export default function Portfolio() {
     };
   }, [navigationItems]);
 
-  // Screen reader announcements
+  
   const announceToScreenReader = (message: string) => {
     const announcement = document.createElement('div');
     announcement.setAttribute('aria-live', 'polite');
@@ -102,13 +109,15 @@ export default function Portfolio() {
     }, 1000);
   };
 
-  // Intersection Observer for scroll animations
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisibleSections((prev) => new Set([...prev, entry.target.id]));
+            // fire-and-forget section view
+            trackSectionView(entry.target.id).catch(() => {});
           }
         });
       },
@@ -124,7 +133,7 @@ export default function Portfolio() {
     return () => observer.disconnect();
   }, []);
 
-  // Prevent body scroll when chat is open
+  // Prevent body scroll when chat is open (scrollbar space stabilized via scrollbar-gutter)
   useEffect(() => {
     if (chatOpen || mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -148,7 +157,24 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Auto-expand on mobile when chat opens
+  useEffect(() => {
+    (async () => {
+      try {
+        const [p, q, m, e, pr] = await Promise.all([getProfile(), getQuotes(), getMentors(3), getExperience(), getProjectsWithTechs()]);
+        setProfile(p);
+        setQuotes(q);
+        setMentors(m);
+        setExperience(e);
+        setProjects(pr);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error('Failed to load initial data', e);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
   useEffect(() => {
     if (chatOpen && isMobile) {
       setChatExpanded(true);
@@ -170,11 +196,11 @@ export default function Portfolio() {
   };
 
   const handleNavItemClick = (sectionId: string, index: number) => {
-    if (sectionId === 'resume') {
-      // Handle resume action
-      window.open(
-        'https://drive.google.com/file/d/1R3IyA2CENW81cIanieJWI2bE8RFY0N7f/view?usp=sharing'
-      );
+    if (sectionId === 'resume') {      
+      if (profile?.resume) {
+        trackLinkClick('resume', profile.resume).catch(() => {});
+        window.open(profile.resume);
+      }
     } else {
       scrollToSection(sectionId);
     }
@@ -196,6 +222,20 @@ export default function Portfolio() {
         }`}
         style={{ scrollBehavior: 'smooth' }}
       >
+        {loading && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1a2332]/60 animate-[blurIn_180ms_ease-out]">
+            <div className="flex flex-col items-center gap-6">
+              <img
+                src="/android-chrome-512x512.png"
+                alt="Codeswot logo"
+                className="w-20 h-20 animate-pulse"
+              />
+              <div className="w-48 h-1 bg-white/10 overflow-hidden rounded">
+                <div className="h-full bg-[#64FFDA] animate-[progress_1.2s_ease-in-out_infinite]" />
+              </div>
+            </div>
+          </div>
+        )}
         {/* Chat Overlay Blur */}
         {chatOpen && (
           <div
@@ -213,7 +253,12 @@ export default function Portfolio() {
         )}
 
         {/* Floating Links */}
-        <FloatingLinks />
+        <FloatingLinks
+          githubUrl={profile?.github}
+          twitterUrl={profile?.twitter}
+          linkedInUrl={profile?.linkedIn}
+          email={profile?.email}
+        />
 
         {/* Navigation */}
         <Navigation
@@ -225,22 +270,40 @@ export default function Portfolio() {
         />
 
         {/* Main Content */}
-        <Home sectionRef={sectionRefs.home} />
+        {!loading && (
+          <Home
+          sectionRef={sectionRefs.home}
+          introHeader={profile?.introHeader}
+          intro={profile?.intro}
+          quotes={quotes}
+        />
+        )}
         <About
           sectionRef={sectionRefs.about}
           visibleSections={visibleSections}
+          about={profile?.about}
+          favoriteTools={profile?.favoriteTools}
+          profilePhoto={profile?.profilePhoto}
+          mentors={mentors}
         />
         <Experience
           sectionRef={sectionRefs.experience}
           visibleSections={visibleSections}
+          experience={experience}
         />
         <Projects
           sectionRef={sectionRefs.projects}
           visibleSections={visibleSections}
+          projects={projects}
         />
         <Contact
           sectionRef={sectionRefs.contact}
           visibleSections={visibleSections}
+          footTag={profile?.footTag}
+          githubUrl={profile?.github}
+          twitterUrl={profile?.twitter}
+          linkedInUrl={profile?.linkedIn}
+          email={profile?.email}
         />
 
         {/* Chat Widget */}
