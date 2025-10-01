@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
-import { trackProjectView } from "@/lib/firestore";
+import { analytics } from "@/lib/firebase";
+import { logEvent } from 'firebase/analytics';
 import type { ProjectWithTechs } from "@/lib/firestore";
 
 interface ProjectsProps {
@@ -12,7 +13,9 @@ interface ProjectsProps {
 export const Projects = ({ sectionRef, visibleSections, projects = [] }: ProjectsProps) => {
 
   const handleProjectClick = async (projectId: string) => {
-    try { await trackProjectView(projectId); } catch {}
+    if (analytics) {
+      try { logEvent(analytics, 'project_click', { project_id: projectId }); } catch {}
+    }
   };
 
   return (

@@ -10,7 +10,8 @@ import { Contact } from '@/components/sections/Contact';
 import { Chat } from '@/components/sections/Chat';
 import { FloatingLinks } from '@/components/sections/FloatingLinks';
 import { useFirebaseAnalytics } from '@/hooks/useFirebaseAnalytics';
-import { trackSectionView, trackLinkClick } from '@/lib/firestore';
+import { analytics } from '@/lib/firebase';
+import { logEvent } from 'firebase/analytics';
 import { getProfile, getQuotes, getMentors, getExperience, getProjectsWithTechs, type Profile, type Quote, type Mentor, type ExperienceItem, type ProjectWithTechs } from '@/lib/firestore';
 
 export default function Portfolio() {
@@ -116,8 +117,9 @@ export default function Portfolio() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisibleSections((prev) => new Set([...prev, entry.target.id]));
-            // fire-and-forget section view
-            trackSectionView(entry.target.id).catch(() => {});
+            if (analytics) {
+              try { logEvent(analytics, 'section_view', { section_id: entry.target.id }); } catch {}
+            }
           }
         });
       },
@@ -198,7 +200,9 @@ export default function Portfolio() {
   const handleNavItemClick = (sectionId: string, index: number) => {
     if (sectionId === 'resume') {      
       if (profile?.resume) {
-        trackLinkClick('resume', profile.resume).catch(() => {});
+        if (analytics) {
+          try { logEvent(analytics, 'resume_click', { url: profile.resume }); } catch {}
+        }
         window.open(profile.resume);
       }
     } else {

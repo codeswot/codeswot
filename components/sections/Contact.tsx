@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Twitter, MessageSquare } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { useState } from "react";
-import { trackLinkClick } from "@/lib/firestore";
+import { analytics } from "@/lib/firebase";
+import { logEvent } from 'firebase/analytics';
 
 interface ContactProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
@@ -92,7 +93,7 @@ export const Contact = ({ sectionRef, visibleSections, footTag, githubUrl, twitt
                     className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                     aria-label="GitHub Profile"
                     role="listitem"
-                    onClick={() => trackLinkClick('github', githubUrl || 'https://github.com/codeswot').catch(()=>{})}
+                    onClick={() => { if (analytics) { try { logEvent(analytics, 'social_click', { network: 'github', url: githubUrl || 'https://github.com/codeswot' }); } catch {} } }}
                   >
                     <Github size={18} />
                   </a>
@@ -101,7 +102,7 @@ export const Contact = ({ sectionRef, visibleSections, footTag, githubUrl, twitt
                     className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                     aria-label="Twitter Profile"
                     role="listitem"
-                    onClick={() => trackLinkClick('twitter', twitterUrl || 'https://x.com/codeswot').catch(()=>{})}
+                    onClick={() => { if (analytics) { try { logEvent(analytics, 'social_click', { network: 'twitter', url: twitterUrl || 'https://x.com/codeswot' }); } catch {} } }}
                   >
                     <Twitter size={18} />
                   </a>
@@ -110,7 +111,7 @@ export const Contact = ({ sectionRef, visibleSections, footTag, githubUrl, twitt
                     className="p-2 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-full hover:border-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-105 transition-all duration-300"
                     aria-label="LinkedIn Profile"
                     role="listitem"
-                    onClick={() => trackLinkClick('linkedin', linkedInUrl || 'https://www.linkedin.com/in/codeswot/').catch(()=>{})}
+                    onClick={() => { if (analytics) { try { logEvent(analytics, 'social_click', { network: 'linkedin', url: linkedInUrl || 'https://www.linkedin.com/in/codeswot/' }); } catch {} } }}
                   >
                     <Linkedin size={18} />
                   </a>
@@ -124,7 +125,7 @@ export const Contact = ({ sectionRef, visibleSections, footTag, githubUrl, twitt
                   Email Me
                 </h5>
                 <Button
-                  onClick={() => { trackLinkClick('email', `mailto:${email || 'mubarak@codeswot.me'}`).catch(()=>{}); window.open(`mailto:${email || 'mubarak@codeswot.me'}`); }}
+                  onClick={() => { if (analytics) { try { logEvent(analytics, 'email_click', { to: email || 'mubarak@codeswot.me' }); } catch {} } window.open(`mailto:${email || 'mubarak@codeswot.me'}`); }}
                   className="w-full bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300"
                   aria-label={`Send email to ${email || 'mubarak@codeswot.me'}`}
                 >
@@ -154,7 +155,7 @@ export const Contact = ({ sectionRef, visibleSections, footTag, githubUrl, twitt
             <div className="text-gray-400 my-8">or</div>
             <div className="flex gap-4 justify-center">
               <Button
-                onClick={() => { trackLinkClick('email', `mailto:${email || 'mubarak@codeswot.io'}`).catch(()=>{}); window.open(`mailto:${email || 'mubarak@codeswot.io'}`); }}
+                onClick={() => { if (analytics) { try { logEvent(analytics, 'email_click', { to: email || 'mubarak@codeswot.io' }); } catch {} } window.open(`mailto:${email || 'mubarak@codeswot.io'}`); }}
                 className="bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300 px-6 py-2"
                 size="lg"
                 aria-label={`Send email to ${email || 'mubarak@codeswot.io'}`}

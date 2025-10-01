@@ -1,29 +1,28 @@
 import { useEffect } from 'react';
-import { trackVisitor } from '@/lib/firestore';
+import { analytics } from '@/lib/firebase';
+import { logEvent } from 'firebase/analytics';
 
 export const useFirebaseAnalytics = () => {
   useEffect(() => {
-    // Track page visit
-    const trackPageVisit = async () => {
+    const sendPageView = () => {
+      if (!analytics) return;
       try {
-        await trackVisitor({
-          userAgent: navigator.userAgent,
-          referrer: document.referrer || 'direct',
-          page: window.location.pathname
+        logEvent(analytics, 'page_view', {
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          page_title: document.title,
+          referrer: document.referrer || 'direct'
         });
-      } catch (error) {
-        // Silently fail for analytics
-        console.debug('Analytics tracking failed:', error);
-      }
+      } catch {}
     };
 
     // Track on mount
-    trackPageVisit();
+    sendPageView();
 
     // Track page visibility changes (when user returns to tab)
     const handleVisibilityChange = () => {
       if (!document.hidden) {
-        trackPageVisit();
+        sendPageView();
       }
     };
 
