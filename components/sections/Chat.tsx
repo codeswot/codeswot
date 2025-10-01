@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Maximize2, MessageCircle, Minimize2, Phone, Send, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { generateUserId, initializeChat, sendMessage, subscribeToMessages, type ChatMessage } from "@/lib/firestore";
 
 interface ChatProps {
   chatOpen: boolean;
@@ -8,6 +10,7 @@ interface ChatProps {
   isMobile: boolean;
   setChatOpen: (open: boolean) => void;
   setChatExpanded: (expanded: boolean) => void;
+  userId?: string | null;
 }
 
 export const Chat = ({
@@ -16,19 +19,85 @@ export const Chat = ({
   isMobile,
   setChatOpen,
   setChatExpanded,
+  userId: propUserId,
 }: ChatProps) => {
-  const chatMessages = [
-    {
-      sender: "Mubarak Ibrahim",
-      message: "Hello 👋 How may I be of help ?",
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      }),
-      isUser: false,
-    },
-  ];
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [inputValue, setInputValue] = useState("");
+  const [userId, setUserId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const CALL_IDENTIFIER = "0xU8911v5_call";
+
+  // Use propUserId if provided, otherwise generate one
+  useEffect(() => {
+    if (propUserId) {
+      setUserId(propUserId);
+    } else if (chatOpen && !userId) {
+      const newUserId = generateUserId();
+      setUserId(newUserId);
+      initializeChat(newUserId).catch(console.error);
+    }
+  }, [propUserId, chatOpen, userId]);
+
+  useEffect(() => {
+    if (userId) {
+      const unsubscribe = subscribeToMessages(userId, (newMessages) => {
+        setMessages(newMessages);
+        setTimeout(() => {
+          messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      });
+      return unsubscribe;
+    }
+  }, [userId]);
+
+  // Auto-scroll to bottom when chat opens
+  useEffect(() => {
+    if (chatOpen && messages.length > 0) {
+      setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [chatOpen, messages.length]);
+
+  const handleSendMessage = async () => {
+    if (!inputValue.trim() || !userId || isLoading) return;
+
+    const messageContent = inputValue.trim();
+    
+    // Check for call identifier and silently clear if found
+    if (messageContent === CALL_IDENTIFIER) {
+      setInputValue("");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await sendMessage(userId, messageContent);
+      setInputValue("");
+    } catch (error) {
+      console.error('Failed to send message:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  const formatTime = (timestamp: any) => {
+    const date = timestamp?.toDate ? timestamp.toDate() : new Date(timestamp);
+    return date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -106,27 +175,52 @@ export const Chat = ({
             role="log"
             aria-label="Chat messages"
           >
-            {chatMessages.map((msg, index) => (
-              <div
-                key={index}
-                className={`flex ${
-                  msg.isUser ? "justify-end" : "justify-start"
-                }`}
-              >
+            {messages.map((msg) => {
+              // Check if this is a call message
+              if (msg.content === CALL_IDENTIFIER) {
+                return (
+                  <div key={msg.id} className="flex justify-center my-4">
+                    <div className="flex items-center w-full text-[#64FFDA] text-sm">
+                      <div className="flex-1 h-px bg-[#64FFDA]/30"></div>
+                      <div className="flex items-center space-x-2 px-4">
+                        <Phone size={16} className="text-[#64FFDA]/70 ml-2"/>
+                        <span className="font-medium text-[#64FFDA]/70 ml-2">
+                          {msg.user === "codeswot" ? "codeswot" : "you"}
+                        </span>
+                        <time className="text-xs text-[#64FFDA]/70 ml-2">
+                          {formatTime(msg.timestamp)}
+                        </time>
+                      </div>
+                      <div className="flex-1 h-px bg-[#64FFDA]/30"></div>
+                    </div>
+                  </div>
+                );
+              }
+
+              // Regular message
+              return (
                 <div
-                  className={`max-w-xs p-3 rounded-lg text-sm hover:scale-[1.02] transition-transform duration-300 ${
-                    msg.isUser
-                      ? "bg-[#64FFDA] text-[#1a2332] rounded-br-sm"
-                      : "bg-[#64FFDA]/10 text-white rounded-bl-sm"
+                  key={msg.id}
+                  className={`flex ${
+                    msg.user !== "codeswot" ? "justify-end" : "justify-start"
                   }`}
-                  role="article"
-                  aria-label={`Message from ${msg.sender}`}
                 >
-                  <p className="leading-relaxed">{msg.message}</p>
-                  <time className="text-xs opacity-70 mt-1">{msg.time}</time>
+                  <div
+                    className={`max-w-xs p-3 rounded-lg text-sm hover:scale-[1.02] transition-transform duration-300 ${
+                      msg.user !== "codeswot"
+                        ? "bg-[#64FFDA] text-[#1a2332] rounded-br-sm"
+                        : "bg-[#64FFDA]/10 text-white rounded-bl-sm"
+                    }`}
+                    role="article"
+                    aria-label={`Message from ${msg.user === "codeswot" ? "Codeswot" : "You"}`}
+                  >
+                    <p className="leading-relaxed">{msg.content}</p>
+                    <time className="text-xs opacity-70 mt-1">{formatTime(msg.timestamp)}</time>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+            <div ref={messagesEndRef} />
           </div>
 
           <div className="px-4 py-3 border-t border-[#64FFDA]/20 bg-[#1a2332] sticky bottom-0">
@@ -138,8 +232,11 @@ export const Chat = ({
                 id="chat-input"
                 type="text"
                 placeholder="Type a message..."
-                disabled
-                className="flex-1 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-[#64FFDA] h-8 text-sm transition-all duration-300 opacity-50 cursor-not-allowed"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                disabled={isLoading}
+                className="flex-1 bg-[#64FFDA]/10 border border-[#64FFDA]/20 rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-[#64FFDA] h-8 text-sm transition-all duration-300"
                 aria-describedby="chat-input-help"
               />
               <div id="chat-input-help" className="sr-only">
@@ -147,8 +244,9 @@ export const Chat = ({
               </div>
               <Button
                 size="sm"
-                disabled
-                className="bg-[#64FFDA] text-[#1a2332] hover:bg-[#64FFDA]/90 rounded-lg px-3 py-2 h-8 min-w-[32px] flex items-center justify-center transition-all duration-300 opacity-50 cursor-not-allowed"
+                onClick={handleSendMessage}
+                disabled={!inputValue.trim() || isLoading}
+                className="bg-[#64FFDA] text-[#1a2332] hover:bg-[#64FFDA]/90 rounded-lg px-3 py-2 h-8 min-w-[32px] flex items-center justify-center transition-all duration-300"
                 aria-label="Send message"
               >
                 <Send size={14} />
@@ -171,6 +269,9 @@ export const Chat = ({
           className="w-14 h-14 rounded-full bg-[#64FFDA] text-[#1a2332] hover:bg-[#64FFDA]/90 shadow-lg hover:scale-105 transition-all duration-300 relative"
           aria-label={chatOpen ? "Close chat" : "Open chat"}
         >
+          {/* Notification Dot */}
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-pulse shadow-lg border-2 border-white" />
+          
           {/* Chat Icon to X Animation */}
           <div className="relative w-6 h-6 flex items-center justify-center">
             <div

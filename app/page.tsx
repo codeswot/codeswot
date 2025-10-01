@@ -12,7 +12,7 @@ import { FloatingLinks } from '@/components/sections/FloatingLinks';
 import { useFirebaseAnalytics } from '@/hooks/useFirebaseAnalytics';
 import { analytics } from '@/lib/firebase';
 import { logEvent } from 'firebase/analytics';
-import { getProfile, getQuotes, getMentors, getExperience, getProjectsWithTechs, type Profile, type Quote, type Mentor, type ExperienceItem, type ProjectWithTechs } from '@/lib/firestore';
+import { getProfile, getQuotes, getMentors, getExperience, getProjectsWithTechs, getOrCreateDeviceId, initializeChat, type Profile, type Quote, type Mentor, type ExperienceItem, type ProjectWithTechs } from '@/lib/firestore';
 
 export default function Portfolio() {
   const [chatOpen, setChatOpen] = useState(false);
@@ -30,6 +30,7 @@ export default function Portfolio() {
   const [experience, setExperience] = useState<ExperienceItem[]>([]);
   const [projects, setProjects] = useState<ProjectWithTechs[]>([]);
   const [loading, setLoading] = useState(true);
+  const [chatUserId, setChatUserId] = useState<string | null>(null);
 
   // Initialize Firebase analytics
   useFirebaseAnalytics();
@@ -157,6 +158,24 @@ export default function Portfolio() {
     window.addEventListener('resize', checkMobile);
 
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Initialize chat user ID on first load
+  useEffect(() => {
+    const initializeChatUser = async () => {
+      try {
+        // Get or create device-based user ID
+        const userId = getOrCreateDeviceId();
+        setChatUserId(userId);
+        
+        // Initialize chat for this user
+        await initializeChat(userId);
+      } catch (error) {
+        console.error('Failed to initialize chat user:', error);
+      }
+    };
+
+    initializeChatUser();
   }, []);
 
   useEffect(() => {
@@ -317,6 +336,7 @@ export default function Portfolio() {
           isMobile={isMobile}
           setChatOpen={setChatOpen}
           setChatExpanded={setChatExpanded}
+          userId={chatUserId}
         />
       </div>
     </>

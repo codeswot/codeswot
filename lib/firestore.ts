@@ -9,6 +9,8 @@ import {
   orderBy, 
   limit,
   Timestamp,  
+  onSnapshot,
+  serverTimestamp,
 } from 'firebase/firestore';
 import { db } from './firebase';
 
@@ -300,4 +302,147 @@ export const getProjectViewStats = async (days: number = 30) => {
     console.error('Error getting project view stats:', error);
     throw error;
   }
+};
+
+export interface ChatMessage {
+  id: string;
+  content: string;
+  timestamp: Timestamp;
+  user: string;
+}
+
+export const generateUserId = (): string => {
+  // Device fingerprinting for consistent ID across browsers on same device
+  const fingerprint = {
+    // Screen characteristics (stable across browsers)
+    screen: `${screen.width}x${screen.height}x${screen.colorDepth}`,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    language: navigator.language,
+    platform: navigator.platform,
+    // Hardware concurrency (CPU cores)
+    cores: navigator.hardwareConcurrency || 'unknown',
+    // Memory info if available
+    memory: (navigator as any).deviceMemory || 'unknown',
+    // Canvas fingerprint (more stable than user agent)
+    canvas: getCanvasFingerprint(),
+  };
+
+  // Create a stable string from device characteristics
+  const deviceString = Object.values(fingerprint).join('|');
+  
+  // Generate consistent hash
+  let hash = 0;
+  for (let i = 0; i < deviceString.length; i++) {
+    const char = deviceString.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  
+  return `device_${Math.abs(hash).toString(36)}`;
+};
+
+// Get or create a persistent device ID
+export const getOrCreateDeviceId = (): string => {
+  const STORAGE_KEY = 'deviceId';
+  
+  // Try to get existing device ID from localStorage
+  let deviceId = localStorage.getItem(STORAGE_KEY);
+  
+  if (!deviceId) {
+    // Generate new device ID and store it
+    deviceId = generateUserId();
+    localStorage.setItem(STORAGE_KEY, deviceId);
+  }
+  
+  return deviceId;
+};
+
+// Canvas fingerprinting for additional uniqueness
+const getCanvasFingerprint = (): string => {
+  try {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return 'no_canvas';
+    
+    // Draw some text with specific styling
+    ctx.textBaseline = 'top';
+    ctx.font = '14px Arial';
+    ctx.fillStyle = '#f60';
+    ctx.fillRect(125, 1, 62, 20);
+    ctx.fillStyle = '#069';
+    ctx.fillText('Device fingerprint', 2, 15);
+    ctx.fillStyle = 'rgba(102, 204, 0, 0.7)';
+    ctx.fillText('Device fingerprint', 4, 17);
+    
+    return canvas.toDataURL().slice(-50); // Last 50 chars for uniqueness
+  } catch (e) {
+    return 'canvas_error';
+  }
+};
+
+const GREETING_MESSAGES = [
+  "Hello 👋 How may I be of help?",
+  "Hey there! What can I do for you today?",  
+  "Hi there! What would you like to know?",
+  "Hey! Ready to have a conversation? 💬",
+  "Hi! What's on your mind?",
+  "Hello there! How can I be of service?"
+];
+
+export const initializeChat = async (userId: string): Promise<string> => {
+  try {
+    const chatRef = doc(db, 'chats', userId);
+    const messagesRef = collection(chatRef, 'messages');
+    
+    
+    const existingMessages = await getDocs(messagesRef);
+    if (existingMessages.empty) {
+      // Pick a random greeting message
+      const randomGreeting = GREETING_MESSAGES[Math.floor(Math.random() * GREETING_MESSAGES.length)];
+      
+      await addDoc(messagesRef, {
+        content: randomGreeting,
+        timestamp: serverTimestamp(),
+        user: "codeswot"
+      });
+    }
+    
+    return userId;
+  } catch (error) {
+    console.error('Error initializing chat:', error);
+    throw error;
+  }
+};
+
+export const sendMessage = async (userId: string, content: string): Promise<void> => {
+  try {
+    const chatRef = doc(db, 'chats', userId);
+    const messagesRef = collection(chatRef, 'messages');
+    
+    await addDoc(messagesRef, {
+      content,
+      timestamp: serverTimestamp(),
+      user: userId
+    });
+  } catch (error) {
+    console.error('Error sending message:', error);
+    throw error;
+  }
+};
+
+export const subscribeToMessages = (
+  userId: string,
+  callback: (messages: ChatMessage[]) => void
+): (() => void) => {
+  const chatRef = doc(db, 'chats', userId);
+  const messagesRef = collection(chatRef, 'messages');
+  const q = query(messagesRef, orderBy('timestamp', 'asc'));
+  
+  return onSnapshot(q, (snapshot) => {
+    const messages = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    })) as ChatMessage[];
+    callback(messages);
+  });
 };
