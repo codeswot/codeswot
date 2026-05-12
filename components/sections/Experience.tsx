@@ -1,13 +1,44 @@
 import type { ExperienceItem } from "@/lib/firestore";
 import { Timestamp } from "firebase/firestore";
+import { Card } from "@/components/ui/card";
+import { ExternalLink, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface ExperienceProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
   visibleSections: Set<string>;
   experience?: ExperienceItem[];
+  onExpandedChange?: (expanded: boolean) => void;
 }
 
-export const Experience = ({ sectionRef, visibleSections, experience = [] }: ExperienceProps) => {
+interface ExperienceView {
+  id: string;
+  company: string;
+  position: string;
+  period: string;
+  description: string;
+  current: boolean;
+  links: string[];
+  location?: string;
+}
+
+export const Experience = ({ sectionRef, visibleSections, experience = [], onExpandedChange }: ExperienceProps) => {
+  const [activeExperience, setActiveExperience] = useState<ExperienceView | null>(null);
+
+  useEffect(() => {
+    onExpandedChange?.(!!activeExperience);
+    if (!activeExperience) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveExperience(null);
+    };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [activeExperience, onExpandedChange]);
+
   const toJsDate = (value: Date | Timestamp | null | undefined): Date | null => {
     if (!value) return null;
     return value instanceof Date ? value : value.toDate();
@@ -32,7 +63,7 @@ export const Experience = ({ sectionRef, visibleSections, experience = [] }: Exp
     return bd - ad;
   });
 
-  const experiences = sorted.map((e) => {
+  const experiences: ExperienceView[] = sorted.map((e) => {
     const start = toJsDate(e.start);
     const end = toJsDate(e.end ?? null);
     const left = start ? `${start.toLocaleString('default', { month: 'short' })} ${start.getFullYear()}` : '';
@@ -40,12 +71,14 @@ export const Experience = ({ sectionRef, visibleSections, experience = [] }: Exp
     const duration = formatDuration(start, e.current ? null : end);
     const period = `${left} - ${right} · ${duration}`.trim();
     return {
+      id: e.id,
       company: e.company,
       position: e.title,
       period,
       description: e.desc,
       current: !!e.current,
       links: e.links || [],
+      location: e.location,
     };
   });
 
@@ -84,8 +117,18 @@ export const Experience = ({ sectionRef, visibleSections, experience = [] }: Exp
           <div className="space-y-12">
             {experiences.map((exp, index) => (
               <article
-                key={index}
-                className={`relative flex items-start space-x-8 hover:scale-[1.01] transition-all duration-1000 ${
+                key={exp.id || index}
+                onClick={() => setActiveExperience(exp)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setActiveExperience(exp);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`View details for ${exp.position} at ${exp.company}`}
+                className={`relative flex items-start space-x-8 cursor-pointer hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-[#64FFDA]/50 rounded transition-all duration-1000 ${
                   visibleSections.has("experience")
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
@@ -134,6 +177,72 @@ export const Experience = ({ sectionRef, visibleSections, experience = [] }: Exp
           </div>
         </div>
       </div>
+
+      {activeExperience && (
+        <>
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 animate-[blurIn_180ms_ease-out]"
+            onClick={() => setActiveExperience(null)}
+            aria-hidden="true"
+          />
+          <Card
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="experience-detail-title"
+            className="fixed inset-4 md:inset-x-0 md:inset-y-10 md:mx-auto md:max-w-5xl z-50 bg-[#1a2332] border-[#64FFDA] shadow-2xl overflow-hidden rounded-lg flex flex-col"
+          >
+            <div className="flex items-center justify-between px-5 py-3 border-b border-[#64FFDA]/20">
+              <div id="experience-detail-title" className="text-white font-semibold truncate pr-3">
+                <span className="text-[#64FFDA]">{">"} </span>{activeExperience.position}
+              </div>
+              <button
+                onClick={() => setActiveExperience(null)}
+                className="text-gray-400 hover:text-[#64FFDA] hover:scale-105 transition-all duration-300 h-7 w-7 flex items-center justify-center rounded flex-shrink-0"
+                aria-label="Close experience details"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-5 py-5 space-y-4">
+              <div className="space-y-1">
+                <h4 className="text-[#64FFDA] font-medium">{activeExperience.company}</h4>
+                <time className="text-gray-400 text-sm block">{activeExperience.period}</time>
+                {activeExperience.location && (
+                  <p className="text-gray-400 text-sm">{activeExperience.location}</p>
+                )}
+              </div>
+
+              <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                {activeExperience.description}
+              </p>
+
+              {activeExperience.links.length > 0 && (
+                <div>
+                  <h4 className="text-[#64FFDA] text-xs font-semibold mb-2 uppercase tracking-wide">
+                    Links
+                  </h4>
+                  <ul className="space-y-1">
+                    {activeExperience.links.map((link, i) => (
+                      <li key={i}>
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-[#64FFDA] hover:underline text-sm break-all"
+                        >
+                          <ExternalLink size={14} className="flex-shrink-0" />
+                          {link}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </Card>
+        </>
+      )}
     </section>
   );
-}; 
+};
