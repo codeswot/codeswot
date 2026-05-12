@@ -208,7 +208,7 @@ export const About = ({ sectionRef, visibleSections, about, favoriteTools, profi
             role="dialog"
             aria-modal="true"
             aria-labelledby="mentor-detail-title"
-            className="fixed inset-4 md:inset-x-0 md:inset-y-10 md:mx-auto md:max-w-2xl z-50 bg-[#1a2332] border-[#64FFDA] shadow-2xl overflow-hidden rounded-lg flex flex-col"
+            className="fixed inset-4 md:inset-x-0 md:inset-y-10 md:mx-auto md:max-w-5xl z-50 bg-[#1a2332] border-[#64FFDA] shadow-2xl overflow-hidden rounded-lg flex flex-col"
           >
             <div className="flex items-center justify-between px-5 py-3 border-b border-[#64FFDA]/20">
               <div className="flex items-center space-x-3">

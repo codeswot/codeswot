@@ -15,12 +15,18 @@ interface ProjectsProps {
 
 export const Projects = ({ sectionRef, visibleSections, projects = [], onExpandedChange }: ProjectsProps) => {
   const [showAll, setShowAll] = useState(false);
+  const [activeProject, setActiveProject] = useState<ProjectWithTechs | null>(null);
+
+  const anyOverlayOpen = showAll || !!activeProject;
 
   useEffect(() => {
-    onExpandedChange?.(showAll);
-    if (!showAll) return;
+    onExpandedChange?.(anyOverlayOpen);
+    if (!anyOverlayOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setShowAll(false);
+      if (e.key === 'Escape') {
+        if (activeProject) setActiveProject(null);
+        else if (showAll) setShowAll(false);
+      }
     };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
@@ -28,12 +34,13 @@ export const Projects = ({ sectionRef, visibleSections, projects = [], onExpande
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = 'unset';
     };
-  }, [showAll, onExpandedChange]);
+  }, [anyOverlayOpen, activeProject, showAll, onExpandedChange]);
 
-  const handleProjectClick = async (projectId: string) => {
+  const handleProjectClick = async (project: ProjectWithTechs) => {
     if (analytics) {
-      try { logEvent(analytics, 'project_click', { project_id: projectId }); } catch {}
+      try { logEvent(analytics, 'project_click', { project_id: project.id }); } catch {}
     }
+    setActiveProject(project);
   };
 
   const handleShowMore = () => {
@@ -76,13 +83,13 @@ export const Projects = ({ sectionRef, visibleSections, projects = [], onExpande
                   ? `${index * 200}ms`
                   : "0ms",
               }}
-              onClick={() => handleProjectClick(project.id)}
+              onClick={() => handleProjectClick(project)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  handleProjectClick(project.id);
+                  handleProjectClick(project);
                 }
               }}
               aria-label={`View details for ${project.title} project`}
@@ -180,7 +187,7 @@ export const Projects = ({ sectionRef, visibleSections, projects = [], onExpande
                 {projects.map((project) => (
                   <article
                     key={project.id}
-                    onClick={() => handleProjectClick(project.id)}
+                    onClick={() => handleProjectClick(project)}
                     role="button"
                     tabIndex={0}
                     aria-label={`View details for ${project.title}`}
@@ -218,6 +225,68 @@ export const Projects = ({ sectionRef, visibleSections, projects = [], onExpande
                   <p className="col-span-full text-gray-400 text-sm text-center py-8">
                     No projects available.
                   </p>
+                )}
+              </div>
+            </div>
+          </Card>
+        </>
+      )}
+
+      {activeProject && (
+        <>
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 animate-[blurIn_180ms_ease-out]"
+            onClick={() => setActiveProject(null)}
+            aria-hidden="true"
+          />
+          <Card
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-detail-title"
+            className="fixed inset-4 md:inset-x-0 md:inset-y-10 md:mx-auto md:max-w-5xl z-50 bg-[#1a2332] border-[#64FFDA] shadow-2xl overflow-hidden rounded-lg flex flex-col"
+          >
+            <div className="flex items-center justify-between px-5 py-3 border-b border-[#64FFDA]/20">
+              <div id="project-detail-title" className="text-white font-semibold truncate pr-3">
+                <span className="text-[#64FFDA]">{">"} </span>{activeProject.title}
+              </div>
+              <button
+                onClick={() => setActiveProject(null)}
+                className="text-gray-400 hover:text-[#64FFDA] hover:scale-105 transition-all duration-300 h-7 w-7 flex items-center justify-center rounded flex-shrink-0"
+                aria-label="Close project details"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto">
+              <div className="relative bg-black">
+                <img
+                  src={activeProject.icon || "/placeholder.svg"}
+                  alt={`${activeProject.title} screenshot`}
+                  className="w-full max-h-[40vh] object-cover"
+                />
+              </div>
+              <div className="px-5 py-5 space-y-4">
+                <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                  {activeProject.description}
+                </p>
+                {activeProject.technologies.length > 0 && (
+                  <div>
+                    <h4 className="text-[#64FFDA] text-xs font-semibold mb-2 uppercase tracking-wide">
+                      Technologies
+                    </h4>
+                    <div className="flex flex-wrap gap-2" role="list" aria-label="Technologies used">
+                      {activeProject.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2 py-1 bg-[#64FFDA]/15 text-[#64FFDA] text-xs rounded"
+                          role="listitem"
+                        >
+                          {tech.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
