@@ -8,4 +8,5 @@ out/
 .turbo/
 coverage/
 *.log
+.DS_Store
 .claude/
