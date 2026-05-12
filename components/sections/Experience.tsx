@@ -37,7 +37,7 @@ export const Experience = ({ sectionRef, visibleSections, experience = [] }: Exp
     const end = toJsDate(e.end ?? null);
     const left = start ? `${start.toLocaleString('default', { month: 'short' })} ${start.getFullYear()}` : '';
     const right = e.current ? 'Present' : end ? `${end.toLocaleString('default', { month: 'short' })} ${end.getFullYear()}` : '';
-    const duration = formatDuration(start, end);
+    const duration = formatDuration(start, e.current ? null : end);
     const period = `${left} - ${right} · ${duration}`.trim();
     return {
       company: e.company,

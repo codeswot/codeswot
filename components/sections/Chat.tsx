@@ -11,6 +11,7 @@ interface ChatProps {
   setChatOpen: (open: boolean) => void;
   setChatExpanded: (expanded: boolean) => void;
   userId?: string | null;
+  dimmed?: boolean;
 }
 
 export const Chat = ({
@@ -20,6 +21,7 @@ export const Chat = ({
   setChatOpen,
   setChatExpanded,
   userId: propUserId,
+  dimmed = false,
 }: ChatProps) => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -100,7 +102,7 @@ export const Chat = ({
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-1 right-2 z-50">
       {chatOpen && (
         <Card
           className={`${
@@ -261,7 +263,9 @@ export const Chat = ({
         className={`absolute bottom-0 right-0 transition-all duration-500 ${
           chatOpen && (chatExpanded || isMobile)
             ? "opacity-0 pointer-events-none scale-75"
-            : "opacity-100 scale-100"
+            : dimmed
+              ? "opacity-70 scale-75"
+              : "opacity-100 scale-100"
         }`}
       >
         <Button

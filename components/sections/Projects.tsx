@@ -1,20 +1,45 @@
 import { Button } from "@/components/ui/button";
-import { CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { analytics } from "@/lib/firebase";
 import { logEvent } from 'firebase/analytics';
 import type { ProjectWithTechs } from "@/lib/firestore";
+import { useEffect, useState } from "react";
+import { X } from "lucide-react";
 
 interface ProjectsProps {
   sectionRef: React.RefObject<HTMLDivElement | null>;
   visibleSections: Set<string>;
   projects?: ProjectWithTechs[];
+  onExpandedChange?: (expanded: boolean) => void;
 }
 
-export const Projects = ({ sectionRef, visibleSections, projects = [] }: ProjectsProps) => {
+export const Projects = ({ sectionRef, visibleSections, projects = [], onExpandedChange }: ProjectsProps) => {
+  const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    onExpandedChange?.(showAll);
+    if (!showAll) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowAll(false);
+    };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showAll, onExpandedChange]);
 
   const handleProjectClick = async (projectId: string) => {
     if (analytics) {
       try { logEvent(analytics, 'project_click', { project_id: projectId }); } catch {}
+    }
+  };
+
+  const handleShowMore = () => {
+    setShowAll(true);
+    if (analytics) {
+      try { logEvent(analytics, 'projects_show_more'); } catch {}
     }
   };
 
@@ -114,6 +139,7 @@ export const Projects = ({ sectionRef, visibleSections, projects = [] }: Project
           }`}
         >
           <Button
+            onClick={handleShowMore}
             variant="outline"
             className="border border-[#64FFDA] text-[#64FFDA] bg-transparent hover:bg-[#64FFDA] hover:text-[#1a2332] hover:scale-[1.02] transition-all duration-300 px-6 py-2"
             aria-label="Show more projects"
@@ -122,6 +148,82 @@ export const Projects = ({ sectionRef, visibleSections, projects = [] }: Project
           </Button>
         </div>
       </div>
+
+      {showAll && (
+        <>
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 animate-[blurIn_180ms_ease-out]"
+            onClick={() => setShowAll(false)}
+            aria-hidden="true"
+          />
+          <Card
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="projects-detail-title"
+            className="fixed inset-4 md:inset-x-0 md:inset-y-10 md:mx-auto md:max-w-5xl z-50 bg-[#1a2332] border-[#64FFDA] shadow-2xl overflow-hidden rounded-lg flex flex-col"
+          >
+            <div className="flex items-center justify-between px-5 py-3 border-b border-[#64FFDA]/20">
+              <div id="projects-detail-title" className="text-white font-semibold">
+                <span className="text-[#64FFDA]">{">"} 03.</span> All Projects
+              </div>
+              <button
+                onClick={() => setShowAll(false)}
+                className="text-gray-400 hover:text-[#64FFDA] hover:scale-105 transition-all duration-300 h-7 w-7 flex items-center justify-center rounded"
+                aria-label="Close projects list"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-5 py-5">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {projects.map((project) => (
+                  <article
+                    key={project.id}
+                    onClick={() => handleProjectClick(project.id)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View details for ${project.title}`}
+                    className="group bg-[#0f1722] border border-[#64FFDA]/20 rounded-lg overflow-hidden hover:border-[#64FFDA]/50 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="relative overflow-hidden bg-black">
+                      <img
+                        src={project.icon || "/placeholder.svg"}
+                        alt={`${project.title} screenshot`}
+                        className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-4 space-y-3">
+                      <h3 className="text-base font-semibold text-white group-hover:text-[#64FFDA] transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-1" role="list" aria-label="Technologies used">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-2 py-1 bg-[#64FFDA]/15 text-[#64FFDA] text-xs rounded"
+                            role="listitem"
+                          >
+                            {tech.name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                ))}
+                {projects.length === 0 && (
+                  <p className="col-span-full text-gray-400 text-sm text-center py-8">
+                    No projects available.
+                  </p>
+                )}
+              </div>
+            </div>
+          </Card>
+        </>
+      )}
     </section>
   );
-}; 
+};

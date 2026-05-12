@@ -1,7 +1,7 @@
 
+# Hey 👋, I am  Mubarak Ibrahim (Codeswot)
 
-# Hey 👋, I am  Mubarak Ibrahim (Codeswot) !
-I am a developer from Nigeria 🇳🇬, I have been developing with Flutter since 2018. My passion for programming started when I first got my hands on an Android phone at the age of 17. I went on to learn how to program in Java, build and load custom Android OS from AOSP, I eventually ended up learning how to code in Flutter ❤️ because i have passion for making attractive and user-friendly software and flutter is just the tool for that. I have expertise in both front-end and back-end development and am constantly searching for new challenges. I also strongly believe in open source software and am always eager to contribute to projects that I believe in. . 
+I am a developer from Nigeria 🇳🇬, I have been developing with Flutter since 2018. My passion for programming started when I first got my hands on an Android phone at the age of 17. I went on to learn how to program in Java, build and load custom Android OS from AOSP, I eventually ended up learning how to code in Flutter ❤️ because i have passion for making attractive and user-friendly software and flutter is just the tool for that. I have expertise in both front-end and back-end development and am constantly searching for new challenges. I also strongly believe in open source software and am always eager to contribute to projects that I believe in. .
 Skilled with an in-depth understanding of Programming, markup, and scripting languages.
 
  I enjoy problem-solving and have designed software systems ranging from large software suites to Mobile-based applications and Web-based applications.
@@ -15,7 +15,8 @@ Specialties: User Interface | Problem Solving | User Experience | Testing | Desi
 
 <br>
 
-### 🤔 More about Me:
+### 🤔 More about Me
+
 - 🔭 &nbsp; Contributing to [Whitenoise](https://www.whitenoise.chat/)
 - 🤝 &nbsp; I’m looking to collaborate on open source Projects
 - 🌱 &nbsp; I’m currently learning Rust;
@@ -27,10 +28,10 @@ Specialties: User Interface | Problem Solving | User Experience | Testing | Desi
 - 📚 &nbsp; When I am free, I read write Tech articles, swim. Checkout my [Blog Post](https://codeswot.medium.com/)
 - 🕸 &nbsp; Check out my Portofolio [Codeswot](https://codeswot.dev)
 
-
 <br>
 
-### 🛠 Language and Tools:
+### 🛠 Language and Tools
+
 <a href="https://flutter.dev" target="_blank"> <img align="left" alt="Flutter" height ="36px" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/flutter.svg"> </a>
 
 <a href="https://www.swift.org/" target="_blank"> <img align="left" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/swift.svg" alt="Swift" height ="35px"/> </a>
@@ -53,11 +54,10 @@ Specialties: User Interface | Problem Solving | User Experience | Testing | Desi
 <a href="https://aws.amazon.com/" target="_blank"> <img align="left" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/aws.svg" alt="AWS" height ="35px"/> </a><a href="https://www.mongodb.com/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/mongodb.svg" alt="MongoDB" height='35px'/> </a><a href="https://redis.io/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/redis.svg" alt="Redis" height='35px'/> </a>
 <a href="https://www.postgresql.org/docs/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/postgress.svg" alt="Postgres" height='35px'/> </a><a href="https://docs.docker.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/docker.svg" alt="Docker" height='35px'/> </a><a href="https://www.figma.com/" target="_blank"> <img src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/tools/figma.svg" alt="Figma" height='35px'/> </a>
 
-
-
 <br>
 
-### 👨‍👩‍👧 Social Accounts:
+### 👨‍👩‍👧 Social Accounts
+
 <a href='mailto:elmubarak333@gmail.com'><img align='left' alt="gmail" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/gmail.svg" height='30px' width='30px'/></a>
 
 <a href='https://wa.me/+2349045476209?text=Hello, Codeswot'><img align='left' alt="whatsapp" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/whatsapp.gif" height='35px' width='35px'/></a>
@@ -68,11 +68,10 @@ Specialties: User Interface | Problem Solving | User Experience | Testing | Desi
 
 <a href='https://www.youtube.com/channel/UCcwc81oTwAz2XWGuoUDaW0g/'><img align='left' alt="youtube" src="https://raw.githubusercontent.com/codeswot/codeswot/main/assets/socials/youtube.gif" height='35px' width='35px'/></a>
 
-
 <br/>
 
-
 ### 📊 Github Stats
+
 <a href='https://github.com/codeswot/github-stats-transparent'>
   
 ![Stats Overview](https://github-readme-stats.vercel.app/api?username=codeswot&count_private=true&show_icons=true)

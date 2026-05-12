@@ -31,6 +31,8 @@ export default function Portfolio() {
   const [projects, setProjects] = useState<ProjectWithTechs[]>([]);
   const [loading, setLoading] = useState(true);
   const [chatUserId, setChatUserId] = useState<string | null>(null);
+  const [mentorExpanded, setMentorExpanded] = useState(false);
+  const [projectsExpanded, setProjectsExpanded] = useState(false);
 
   // Initialize Firebase analytics
   useFirebaseAnalytics();
@@ -308,6 +310,7 @@ export default function Portfolio() {
           favoriteTools={profile?.favoriteTools}
           profilePhoto={profile?.profilePhoto}
           mentors={mentors}
+          onExpandedChange={setMentorExpanded}
         />
         <Experience
           sectionRef={sectionRefs.experience}
@@ -318,6 +321,7 @@ export default function Portfolio() {
           sectionRef={sectionRefs.projects}
           visibleSections={visibleSections}
           projects={projects}
+          onExpandedChange={setProjectsExpanded}
         />
         <Contact
           sectionRef={sectionRefs.contact}
@@ -337,6 +341,7 @@ export default function Portfolio() {
           setChatOpen={setChatOpen}
           setChatExpanded={setChatExpanded}
           userId={chatUserId}
+          dimmed={mentorExpanded || projectsExpanded}
         />
       </div>
     </>
